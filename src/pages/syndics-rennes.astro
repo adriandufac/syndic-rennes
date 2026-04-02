@@ -4,6 +4,7 @@ import LeadForm from '../components/LeadForm.astro';
 import CTABanner from '../components/CTABanner.astro';
 import FAQ from '../components/FAQ.astro';
 import SyndicCard from '../components/SyndicCard.astro';
+import DirectAnswer from '../components/DirectAnswer.astro';
 import { syndics } from '../data/syndics';
 
 const faqItems = [
@@ -58,6 +59,13 @@ const faqItems = [
       </a>
     </div>
   </section>
+
+  <div class="max-w-4xl mx-auto px-4 mt-8">
+    <DirectAnswer
+      question="Quels sont les syndics de copropriété à Rennes ?"
+      answer="Rennes compte plus de 50 cabinets de syndics professionnels répartis en trois catégories : les réseaux nationaux (Foncia, Citya, Nexity), les cabinets régionaux implantés en Bretagne (Armor Gestion, Bretagne Syndic), et les cabinets indépendants locaux. Les tarifs varient de 80 à 420 € par lot et par an selon la taille de la copropriété. Le choix du type de cabinet dépend principalement du nombre de lots et de la complexité de gestion de votre immeuble."
+    />
+  </div>
 
   <!-- Intro : le marché rennais -->
   <section class="max-w-4xl mx-auto px-4 py-16">

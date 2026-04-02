@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import LeadForm from '../components/LeadForm.astro';
 import CTABanner from '../components/CTABanner.astro';
 import FAQ from '../components/FAQ.astro';
+import DirectAnswer from '../components/DirectAnswer.astro';
 
 const faqItems = [
   {
@@ -57,6 +58,13 @@ const faqItems = [
       <p class="text-white/50 text-sm mt-3">Gratuit &middot; Sans engagement &middot; Réponse sous 48h</p>
     </div>
   </section>
+
+  <div class="max-w-4xl mx-auto px-4 mt-8">
+    <DirectAnswer
+      question="Quelle est la différence entre un syndic indépendant et un réseau national à Rennes ?"
+      answer="À Rennes, un syndic indépendant offre généralement plus de réactivité et des tarifs compétitifs (130–260 €/lot/an), adapté aux petites et moyennes copropriétés. Un réseau national (Foncia, Citya, Nexity) propose des outils digitaux standardisés et convient mieux aux grandes copropriétés de 30+ lots (140–220 €/lot/an). Les cabinets régionaux constituent un intermédiaire, avec un ancrage local fort et une capacité de gestion technique."
+    />
+  </div>
 
   <!-- Intro : pourquoi comprendre les types de syndics -->
   <section class="max-w-4xl mx-auto px-4 py-16">

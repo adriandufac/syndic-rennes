@@ -1,0 +1,244 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeadForm from '../components/LeadForm.astro';
+import CTABanner from '../components/CTABanner.astro';
+
+const faqItems = [
+  // Bloc 1 — Prix et tarifs
+  {
+    question: "Quel est le prix moyen d'un syndic à Rennes ?",
+    answer: "En 2025, le prix moyen d'un syndic professionnel à Rennes se situe entre 120 et 280 euros par lot et par an pour une copropriété de 10 à 30 lots. Les petites copropriétés de moins de 10 lots paient plus cher (280 à 420 euros par lot) en raison des coûts fixes incompressibles répartis sur moins de copropriétaires. Au-delà de 100 lots, les tarifs descendent entre 80 et 150 euros par lot et par an."
+  },
+  {
+    question: "Comment est calculé le tarif d'un syndic ?",
+    answer: "Le tarif d'un syndic se compose d'un forfait annuel de base (gestion courante) calculé par lot, auquel s'ajoutent des prestations particulières facturées ponctuellement. Le forfait dépend du nombre de lots, de la complexité technique de l'immeuble (ascenseur, chauffage collectif) et du niveau de service attendu. La loi ALUR impose depuis 2014 un contrat-type qui distingue clairement ces deux postes de dépense."
+  },
+  {
+    question: "Quelles prestations sont hors forfait chez un syndic ?",
+    answer: "Les prestations hors forfait les plus courantes sont : la tenue d'assemblées générales extraordinaires (300 à 800 euros chacune), le suivi de travaux importants (2 à 4% du montant HT), la gestion de contentieux et le recouvrement d'impayés, ainsi que les états datés lors de la vente d'un lot (plafonnés à 380 euros TTC depuis 2020). Ces suppléments peuvent représenter 20 à 40% du forfait de base selon les années."
+  },
+  {
+    question: "Peut-on négocier le tarif d'un syndic ?",
+    answer: "Oui, les honoraires de syndic sont libres et négociables. Le levier le plus efficace est la mise en concurrence lors de l'assemblée générale : en présentant 2 à 3 devis concurrents, vous disposez d'une base de négociation solide. En moyenne, cette démarche permet de réduire les honoraires de 15 à 30%. Le conseil syndical joue un rôle central dans cette négociation."
+  },
+  {
+    question: "Pourquoi les petites copropriétés paient-elles plus cher par lot ?",
+    answer: "Un syndic supporte des coûts fixes incompressibles quelle que soit la taille de la copropriété : tenue de l'AG, comptabilité, assurances, archivage, représentation légale. Dans une copropriété de 6 lots, ces coûts sont répartis entre 6 copropriétaires au lieu de 50 ou 100, ce qui fait mécaniquement monter le prix par lot. C'est pourquoi une copropriété de moins de 10 lots paie en moyenne 280 à 420 euros par lot, contre 80 à 150 euros pour plus de 100 lots."
+  },
+  {
+    question: "Que comprend le forfait de base d'un syndic ?",
+    answer: "Le forfait de base inclut la gestion courante : tenue de la comptabilité, préparation et tenue de l'assemblée générale annuelle ordinaire, gestion des contrats d'entretien courant, conservation des archives, suivi des sinistres courants et représentation légale du syndicat des copropriétaires. Le contrat-type imposé par le décret du 26 mars 2015 liste précisément les missions obligatoirement incluses dans ce forfait."
+  },
+  {
+    question: "Un syndic peut-il augmenter ses honoraires en cours de contrat ?",
+    answer: "Non, un syndic ne peut pas augmenter unilatéralement ses honoraires en cours de contrat. Le montant du forfait de base est fixé pour toute la durée du mandat, sauf clause d'indexation prévue au contrat (généralement basée sur l'indice INSEE du coût de la construction). Toute modification tarifaire hors indexation doit être votée en assemblée générale."
+  },
+
+  // Bloc 2 — Changer de syndic
+  {
+    question: "Comment changer de syndic en copropriété ?",
+    answer: "Le changement de syndic suit 6 étapes : vérifier la date de fin du contrat actuel, constituer un dossier de mise en concurrence, solliciter des devis de syndics candidats, inscrire le changement à l'ordre du jour de l'AG, voter à la majorité absolue de l'article 25 de la loi du 10 juillet 1965, puis notifier l'ancien syndic. Comptez 3 à 6 mois entre le lancement de la démarche et la prise de fonction du nouveau syndic."
+  },
+  {
+    question: "Quel est le préavis pour résilier un contrat de syndic ?",
+    answer: "Il n'y a pas de préavis au sens strict. Le contrat de syndic prend fin à l'issue de l'assemblée générale au cours de laquelle un nouveau syndic est désigné, ou à la date fixée par cette assemblée. La mise en concurrence doit être inscrite à l'ordre du jour de l'AG précédant l'échéance du contrat. Si aucun nouveau syndic n'est élu, le mandat du syndic en place est prorogé jusqu'à la prochaine AG."
+  },
+  {
+    question: "Peut-on changer de syndic en urgence sans attendre l'AG ?",
+    answer: "Oui, dans des cas graves (faute de gestion avérée, détournement de fonds, carence totale). Un copropriétaire ou le conseil syndical peut saisir le tribunal judiciaire pour demander la désignation d'un administrateur provisoire en référé. Le président du tribunal peut alors nommer un administrateur judiciaire qui assurera la gestion en attendant la prochaine assemblée générale."
+  },
+  {
+    question: "Que se passe-t-il si le syndic refuse de transmettre les documents ?",
+    answer: "La loi ALUR impose à l'ancien syndic de transmettre l'intégralité des documents et des fonds au nouveau syndic dans un délai d'un mois après la fin de son mandat. En cas de refus, le nouveau syndic peut le mettre en demeure par lettre recommandée avec accusé de réception. Si le blocage persiste, le tribunal judiciaire peut ordonner la transmission sous astreinte financière."
+  },
+  {
+    question: "Combien de temps dure la transition entre deux syndics ?",
+    answer: "La période de transition dure légalement un mois maximum. L'ancien syndic doit transmettre tous les documents (comptabilité, contrats, PV d'AG, archives) et les fonds de la copropriété dans ce délai. En pratique, il est courant que la transmission complète prenne 2 à 3 mois, notamment pour les copropriétés importantes avec un historique comptable complexe."
+  },
+  {
+    question: "La mise en concurrence du syndic est-elle obligatoire ?",
+    answer: "Oui, depuis la loi ALUR du 24 mars 2014. Le conseil syndical doit obligatoirement mettre en concurrence plusieurs syndics avant chaque renouvellement de mandat et présenter les offres en assemblée générale. Cette obligation peut être levée par un vote à la majorité des voix de tous les copropriétaires, mais en pratique elle constitue une protection importante pour la copropriété."
+  },
+
+  // Bloc 3 — Obligations légales
+  {
+    question: "Un syndic est-il obligatoire en copropriété ?",
+    answer: "Oui, la désignation d'un syndic est obligatoire dans toute copropriété, conformément à l'article 17 de la loi du 10 juillet 1965. Ce syndic peut être professionnel (cabinet titulaire d'une carte professionnelle G) ou bénévole (un copropriétaire élu par l'AG). En l'absence de syndic, tout copropriétaire peut saisir le tribunal judiciaire pour en faire désigner un."
+  },
+  {
+    question: "Quelles sont les obligations légales d'un syndic ?",
+    answer: "Le syndic a des obligations définies par la loi du 10 juillet 1965 : exécuter les décisions de l'AG, administrer l'immeuble et assurer sa conservation, établir et tenir à jour le carnet d'entretien, gérer la comptabilité du syndicat, ouvrir un compte bancaire séparé au nom du syndicat (obligatoire depuis la loi ALUR pour les copropriétés de plus de 15 lots), et convoquer l'assemblée générale au moins une fois par an."
+  },
+  {
+    question: "Un syndic peut-il refuser de gérer une petite copropriété ?",
+    answer: "Oui, un syndic professionnel est libre d'accepter ou de refuser un mandat. En pratique, certains cabinets refusent les copropriétés de moins de 10 lots car la rentabilité est faible au regard du travail administratif. À Rennes, des syndics spécialisés dans les petites copropriétés existent néanmoins, ainsi que des solutions de syndic coopératif ou bénévole adaptées aux petits immeubles."
+  },
+  {
+    question: "Que faire si le syndic ne répond pas aux demandes des copropriétaires ?",
+    answer: "Commencez par adresser une mise en demeure par lettre recommandée avec accusé de réception, en détaillant les manquements constatés. Si le syndic reste silencieux, le conseil syndical peut convoquer une assemblée générale extraordinaire pour voter la révocation. En cas de carence grave, tout copropriétaire peut saisir le tribunal judiciaire pour demander la nomination d'un administrateur provisoire."
+  },
+  {
+    question: "Quels recours contre un syndic défaillant ?",
+    answer: "Plusieurs recours existent : la mise en demeure par courrier recommandé, la révocation en assemblée générale pour faute (majorité absolue, article 25), la saisine du tribunal judiciaire pour désignation d'un administrateur provisoire, ou l'action en responsabilité civile pour obtenir des dommages et intérêts. Vous pouvez également signaler les manquements à la DGCCRF ou à la chambre de commerce dont dépend la carte professionnelle du syndic."
+  },
+  {
+    question: "Le syndic bénévole a-t-il les mêmes obligations que le professionnel ?",
+    answer: "Oui, le syndic bénévole est soumis aux mêmes obligations légales que le syndic professionnel : gestion comptable, convocation de l'AG, exécution des décisions, entretien de l'immeuble. En revanche, il n'est pas tenu de détenir une carte professionnelle ni de souscrire une garantie financière. Il doit toutefois souscrire une assurance responsabilité civile. Son mandat est voté en AG dans les mêmes conditions."
+  },
+  {
+    question: "Quelle est la durée maximale d'un mandat de syndic ?",
+    answer: "Depuis la loi ALUR de 2014, la durée maximale d'un mandat de syndic est de 3 ans. Ce mandat est renouvelable sans limitation, sous réserve d'un vote en assemblée générale à chaque échéance. En pratique, la plupart des contrats de syndic à Rennes sont conclus pour une durée de 1 à 3 ans, avec mise en concurrence obligatoire avant chaque renouvellement."
+  },
+
+  // Bloc 4 — Spécifique Rennes
+  {
+    question: "Quels types de syndics trouve-t-on à Rennes ?",
+    answer: "Le marché rennais comprend quatre profils de syndics : les grands groupes nationaux (Nexity, Foncia, Citya) qui gèrent de gros volumes, les cabinets régionaux implantés historiquement en Ille-et-Vilaine, les structures indépendantes de proximité spécialisées dans certains quartiers ou types de copropriétés, et les syndics en ligne qui proposent des tarifs réduits avec une gestion dématérialisée. Plus de 50 cabinets exercent dans l'agglomération."
+  },
+  {
+    question: "Y a-t-il des différences de tarifs entre Rennes centre et la périphérie ?",
+    answer: "Les écarts sont faibles mais existent. Les copropriétés situées dans l'hypercentre de Rennes (centre historique, Sainte-Anne, République) bénéficient d'un choix plus large de syndics, ce qui favorise la concurrence et tend à contenir les prix. En périphérie (Saint-Jacques, Villejean, Cleunay), certains syndics appliquent un léger surcoût lié aux temps de déplacement, mais la différence dépasse rarement 5 à 10%."
+  },
+  {
+    question: "Comment se déroule une AG de copropriété à Rennes ?",
+    answer: "L'assemblée générale est convoquée par le syndic au moins 21 jours à l'avance. À Rennes, elle se tient généralement dans une salle louée par le syndic ou dans les locaux communs de la copropriété. Les copropriétaires votent les résolutions à différentes majorités selon leur nature (article 24, 25 ou 26 de la loi de 1965). Depuis la loi du 22 novembre 2021, la participation par visioconférence est possible si l'AG l'a préalablement autorisée."
+  },
+  {
+    question: "Combien de syndics professionnels exercent à Rennes ?",
+    answer: "L'agglomération rennaise compte plus de 50 cabinets de syndics professionnels, allant des antennes de grands groupes nationaux aux cabinets indépendants locaux. Ce nombre inclut les syndics dont le siège est à Rennes ainsi que ceux basés dans la métropole rennaise (Cesson-Sévigné, Saint-Grégoire, Chantepie). Cette densité assure un niveau de concurrence favorable aux copropriétaires."
+  },
+  {
+    question: "Est-ce que le service de mise en relation SyndicRennes.fr est gratuit ?",
+    answer: "Oui, notre service est 100% gratuit et sans engagement pour les copropriétaires et membres du conseil syndical. Nous nous rémunérons auprès des syndics partenaires qui souhaitent être mis en relation avec des copropriétés à Rennes. Vous décrivez votre copropriété via le formulaire, nous sélectionnons les syndics adaptés, et ils vous contactent sous 48 heures avec des propositions personnalisées."
+  },
+  {
+    question: "Quels quartiers de Rennes sont couverts par votre service ?",
+    answer: "Notre service couvre l'intégralité de la ville de Rennes et de sa métropole : centre-ville, Thabor, Saint-Hélier, Sainte-Thérèse, Villejean, Maurepas, Le Blosne, Cleunay, Saint-Jacques, ainsi que les communes limitrophes comme Cesson-Sévigné, Saint-Grégoire, Chantepie, Bruz et Pacé. Les syndics de notre réseau interviennent sur tout le bassin rennais."
+  }
+];
+
+// Découpage par bloc pour le rendu
+const bloc1 = faqItems.slice(0, 7);
+const bloc2 = faqItems.slice(7, 13);
+const bloc3 = faqItems.slice(13, 20);
+const bloc4 = faqItems.slice(20);
+---
+
+<BaseLayout
+  title="FAQ Syndic Rennes : Toutes les Réponses sur la Gestion de Copropriété"
+  description="Questions fréquentes sur les syndics à Rennes : prix, changement, obligations légales, délais. Réponses claires et sourcées."
+  canonical="https://syndic-rennes.fr/faq-syndic-rennes"
+  faqSchema={faqItems}
+>
+
+  <!-- Hero -->
+  <section class="bg-primary text-white py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="font-heading text-3xl md:text-5xl font-extrabold mb-4 leading-tight">
+        FAQ Syndic <span class="text-accent">Rennes</span> : toutes les réponses sur la copropriété
+      </h1>
+      <p class="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+        Prix, changement de syndic, obligations légales, spécificités locales. Trouvez des réponses claires et sourcées à vos questions sur la gestion de copropriété à Rennes.
+      </p>
+      <a
+        href="#formulaire"
+        data-source="hero-faq"
+        class="inline-block bg-accent hover:bg-orange-500 text-white font-heading font-bold px-8 py-4 rounded-xl text-lg transition-colors shadow-lg hover:shadow-xl"
+      >
+        Être mis en relation avec un syndic &rarr;
+      </a>
+      <p class="mt-4 text-sm text-white/60">Gratuit &middot; Sans engagement &middot; Réponse sous 48h</p>
+    </div>
+  </section>
+
+  <!-- Bloc 1 — Prix et tarifs -->
+  <section class="max-w-4xl mx-auto px-4 py-12 md:py-16">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-8">
+      Prix et tarifs d'un syndic à Rennes
+    </h2>
+    <div class="space-y-4">
+      {bloc1.map((item) => (
+        <details class="bg-white rounded-xl shadow-sm border border-gray-100 group">
+          <summary class="flex items-center justify-between cursor-pointer px-6 py-4 font-heading font-semibold text-text hover:text-primary transition-colors">
+            <span>{item.question}</span>
+            <span class="ml-4 text-accent group-open:rotate-45 transition-transform text-xl font-bold">+</span>
+          </summary>
+          <div class="faq-answer px-6 pb-5 text-sm text-text/70 leading-relaxed">
+            {item.answer}
+          </div>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- Bloc 2 — Changer de syndic -->
+  <section class="max-w-4xl mx-auto px-4 py-12 md:py-16">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-8">
+      Changer de syndic à Rennes
+    </h2>
+    <div class="space-y-4">
+      {bloc2.map((item) => (
+        <details class="bg-white rounded-xl shadow-sm border border-gray-100 group">
+          <summary class="flex items-center justify-between cursor-pointer px-6 py-4 font-heading font-semibold text-text hover:text-primary transition-colors">
+            <span>{item.question}</span>
+            <span class="ml-4 text-accent group-open:rotate-45 transition-transform text-xl font-bold">+</span>
+          </summary>
+          <div class="faq-answer px-6 pb-5 text-sm text-text/70 leading-relaxed">
+            {item.answer}
+          </div>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA intermédiaire entre bloc 2 et bloc 3 -->
+  <div class="max-w-4xl mx-auto px-4">
+    <CTABanner source="faq-mid" />
+  </div>
+
+  <!-- Bloc 3 — Obligations légales -->
+  <section class="max-w-4xl mx-auto px-4 py-12 md:py-16">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-8">
+      Obligations légales du syndic de copropriété
+    </h2>
+    <div class="space-y-4">
+      {bloc3.map((item) => (
+        <details class="bg-white rounded-xl shadow-sm border border-gray-100 group">
+          <summary class="flex items-center justify-between cursor-pointer px-6 py-4 font-heading font-semibold text-text hover:text-primary transition-colors">
+            <span>{item.question}</span>
+            <span class="ml-4 text-accent group-open:rotate-45 transition-transform text-xl font-bold">+</span>
+          </summary>
+          <div class="faq-answer px-6 pb-5 text-sm text-text/70 leading-relaxed">
+            {item.answer}
+          </div>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- Bloc 4 — Spécifique Rennes -->
+  <section class="max-w-4xl mx-auto px-4 py-12 md:py-16">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-8">
+      Syndics à Rennes : questions locales
+    </h2>
+    <div class="space-y-4">
+      {bloc4.map((item) => (
+        <details class="bg-white rounded-xl shadow-sm border border-gray-100 group">
+          <summary class="flex items-center justify-between cursor-pointer px-6 py-4 font-heading font-semibold text-text hover:text-primary transition-colors">
+            <span>{item.question}</span>
+            <span class="ml-4 text-accent group-open:rotate-45 transition-transform text-xl font-bold">+</span>
+          </summary>
+          <div class="faq-answer px-6 pb-5 text-sm text-text/70 leading-relaxed">
+            {item.answer}
+          </div>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- Formulaire -->
+  <div class="max-w-4xl mx-auto px-4 py-12">
+    <LeadForm />
+  </div>
+
+</BaseLayout>

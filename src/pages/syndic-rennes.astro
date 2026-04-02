@@ -4,6 +4,7 @@ import LeadForm from '../components/LeadForm.astro';
 import CTABanner from '../components/CTABanner.astro';
 import FAQ from '../components/FAQ.astro';
 import HowItWorks from '../components/HowItWorks.astro';
+import DirectAnswer from '../components/DirectAnswer.astro';
 
 const faqItems = [
   {
@@ -67,6 +68,13 @@ const faqItems = [
       <p class="mt-4 text-sm text-white/60">Gratuit &middot; Sans engagement &middot; Reponse sous 48h</p>
     </div>
   </section>
+
+  <div class="max-w-4xl mx-auto px-4 mt-8">
+    <DirectAnswer
+      question="Comment trouver le syndic adapté à sa copropriété à Rennes ?"
+      answer="Rennes compte plus de 50 cabinets de syndics professionnels : réseaux nationaux (Foncia, Citya, Nexity), cabinets régionaux et indépendants locaux. Le choix dépend de la taille de votre copropriété, du type d'immeuble et de votre localisation. Les tarifs vont de 80 € par lot/an pour les grandes copropriétés à 420 € pour les petites. Notre service gratuit analyse votre profil et transmet votre demande aux syndics partenaires adaptés."
+    />
+  </div>
 
   <!-- Comment ca marche -->
   <HowItWorks />

@@ -4,6 +4,7 @@ import LeadForm from '../components/LeadForm.astro';
 import CTABanner from '../components/CTABanner.astro';
 import HowItWorks from '../components/HowItWorks.astro';
 import FAQ from '../components/FAQ.astro';
+import DirectAnswer from '../components/DirectAnswer.astro';
 
 const faqItems = [
   { question: "Combien coûte un syndic à Rennes ?", answer: "Le coût moyen d'un syndic à Rennes varie de 80 € à 420 € par lot et par an, selon la taille de votre copropriété. Les petites copropriétés (moins de 10 lots) paient en moyenne 280 à 420 € par lot, tandis que les grandes copropriétés (plus de 100 lots) bénéficient de tarifs réduits, entre 80 et 150 € par lot." },
@@ -38,6 +39,13 @@ const faqItems = [
       <p class="text-white/50 text-sm mt-3">Gratuit &middot; Sans engagement</p>
     </div>
   </section>
+
+  <div class="max-w-4xl mx-auto px-4 mt-8">
+    <DirectAnswer
+      question="Comment trouver un bon syndic de copropriété à Rennes ?"
+      answer="Pour trouver un syndic adapté à votre copropriété à Rennes, décrivez votre immeuble (nombre de lots, type, situation contractuelle) sur notre formulaire. Nous analysons votre profil et transmettons votre demande aux syndics partenaires dont la spécialité et la zone correspondent. Le coût moyen d'un syndic à Rennes varie de 80 à 420 € par lot et par an selon la taille de la copropriété. Plus de 50 cabinets exercent sur la métropole rennaise."
+    />
+  </div>
 
   <!-- Comment ça marche -->
   <HowItWorks />

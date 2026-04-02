@@ -1,0 +1,16 @@
+---
+interface Props {
+  question: string;
+  answer: string;
+}
+const { question, answer } = Astro.props;
+---
+
+<div class="direct-answer" itemscope itemtype="https://schema.org/Question">
+  <meta itemprop="name" content={question} />
+  <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+    <p itemprop="text" class="text-lg font-medium text-text bg-blue-50 border-l-4 border-primary p-4 rounded-r-lg mb-8">
+      {answer}
+    </p>
+  </div>
+</div>

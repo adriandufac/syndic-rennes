@@ -39,6 +39,16 @@ const faqPageSchema = faqSchema ? {
     }
   }))
 } : null;
+
+const speakableSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [".direct-answer", ".faq-answer", "h1 + p"]
+  },
+  "url": canonical
+};
 ---
 
 <!doctype html>
@@ -59,6 +69,7 @@ const faqPageSchema = faqSchema ? {
   <title>{title}</title>
   <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
   {faqPageSchema && <script type="application/ld+json" set:html={JSON.stringify(faqPageSchema)} />}
+  <script type="application/ld+json" set:html={JSON.stringify(speakableSchema)} />
   <script defer data-domain="syndic-rennes.fr" src="https://plausible.io/js/script.js"></script>
 </head>
 <body class="bg-bg text-text font-body antialiased">

@@ -613,3 +613,135 @@ Si webhook n8n activé : le formulaire poste vers l'URL n8n qui calcule le score
 - [ ] Test mobile complet (formulaire utilisable sur iPhone/Android)
 - [ ] Redirection www → non-www configurée sur Netlify
 - [ ] Grille de scoring des leads documentée pour usage manuel (phase 1)
+
+🤖 Optimisation GEO (Generative Engine Optimization)
+L'objectif est d'être cité par les LLMs (ChatGPT, Perplexity, Claude, Gemini) quand un utilisateur pose une question comme :
+
+"comment changer de syndic à Rennes ?"
+"quel est le prix d'un syndic pour une copropriété de 20 lots ?"
+"mon syndic ne répond pas, que faire ?"
+
+Les LLMs ne cherchent pas le site le mieux ranké — ils cherchent la source qui répond le mieux. Ces règles s'appliquent à chaque page du site.
+
+Règle n°1 — Réponse directe en ouverture de chaque page
+Les 150 premiers mots de chaque page doivent contenir une réponse complète à la question principale, sans intro marketing.
+❌ À ne jamais faire :
+
+"Vous êtes copropriétaire à Rennes et vous cherchez un syndic de confiance ? Vous êtes au bon endroit. Notre équipe d'experts vous accompagne dans votre recherche..."
+
+✅ Ce qu'il faut faire :
+
+"Pour changer de syndic à Rennes, il faut notifier l'ancien syndic avant la fin de son contrat, soumettre le changement à l'ordre du jour de l'assemblée générale, et voter à la majorité absolue (article 25 loi du 10 juillet 1965). Le délai minimum est de 3 mois avant la fin du contrat. Le coût moyen d'un syndic à Rennes est de 150 à 280€ par lot et par an selon la taille de la copropriété."
+
+Implémentation dans Astro : chaque page a un composant <DirectAnswer> placé immédiatement après le H1, avec la classe CSS .direct-answer pour le balisage speakable.
+astro---
+// DirectAnswer.astro
+const { question, answer } = Astro.props;
+
+---
+
+<div class="direct-answer" itemscope itemtype="https://schema.org/Question">
+  <meta itemprop="name" content={question} />
+  <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+    <p itemprop="text" class="text-lg font-medium text-gray-800 bg-blue-50 
+       border-l-4 border-[#1B4F72] p-4 rounded-r-lg">
+      {answer}
+    </p>
+  </div>
+</div>
+
+Règle n°2 — Page FAQ dédiée et dense
+Créer /faq-syndic-rennes.astro — page autonome avec 25–30 vraies questions organisées par thème.
+title: "FAQ Syndic Rennes : Toutes les Réponses sur la Gestion de Copropriété"
+description: "Questions fréquentes sur les syndics à Rennes : prix, changement, obligations légales, délais. Réponses claires et sourcées."
+Structure des questions par bloc thématique :
+Bloc 1 — Prix et tarifs
+
+Quel est le prix moyen d'un syndic à Rennes ?
+Comment est calculé le tarif d'un syndic ?
+Quelles prestations sont hors forfait ?
+Peut-on négocier le tarif d'un syndic ?
+
+Bloc 2 — Changer de syndic
+
+Comment changer de syndic en copropriété ?
+Quel est le préavis pour résilier un contrat de syndic ?
+Peut-on changer de syndic en urgence sans attendre l'AG ?
+Que se passe-t-il si le syndic refuse de partir ?
+
+Bloc 3 — Obligations légales
+
+Un syndic est-il obligatoire en copropriété ?
+Quelles sont les obligations légales d'un syndic ?
+Un syndic peut-il refuser de gérer une petite copropriété ?
+Que faire si le syndic ne répond pas ?
+
+Bloc 4 — Spécifique Rennes
+
+Quels sont les syndics indépendants à Rennes ?
+Y a-t-il des différences de tarifs entre Rennes centre et la périphérie ?
+Comment se déroule une AG de copropriété à Rennes ?
+
+Format de chaque réponse :
+
+2 à 4 phrases maximum
+Réponse complète sans renvoi vers une autre page
+Chiffre ou référence légale si pertinent
+Schema FAQ en JSON-LD sur la page entière
+
+Règle n°3 — Données locales uniques
+Ce que les LLMs citent en priorité : ce qu'on ne trouve nulle part ailleurs.
+À publier dès que tu as les données (collectées auprès de tes partenaires syndics) :
+Page /prix-syndic-rennes — ajouter un encadré "Données terrain 2025" :
+Prix observés à Rennes sur notre réseau de partenaires :
+
+- Copros < 10 lots : 320–450€/lot/an
+- Copros 10–30 lots : 200–300€/lot/an
+- Copros 30–100 lots : 130–210€/lot/an
+- Délai de réponse moyen : 3 à 7 jours ouvrés
+- Taux de changement de syndic à Rennes : ~18% des copros par an (estimation)
+  Même si les chiffres sont approximatifs au départ, les publier avec une date et une méthodologie ("basé sur X devis collectés") suffit pour être cité.
+
+Règle n°4 — Balisage speakable schema.org
+À injecter dans BaseLayout.astro pour les pages avec réponse directe :
+json{
+"@context": "https://schema.org",
+"@type": "WebPage",
+"speakable": {
+"@type": "SpeakableSpecification",
+"cssSelector": [".direct-answer", ".faq-answer", "h1 + p"]
+},
+"url": "https://syndic-rennes.fr/[slug]"
+}
+Ce balisage indique explicitement aux crawlers (Google, LLMs) quels passages sont faits pour être extraits et cités.
+
+Règle n°5 — Mentions externes (hors site)
+Les LLMs pondèrent les sources citées par d'autres. Actions à faire manuellement après le lancement :
+Priorité haute :
+
+Créer une fiche Google Business Profile pour syndic-rennes.fr (renforce l'ancrage local)
+S'inscrire sur Pages Jaunes, Trustpilot, Houzz (annuaires que les LLMs connaissent)
+Poster sur forum-syndic.fr et union-habitat.org avec lien vers le site
+
+Priorité moyenne :
+
+Contacter Ouest-France ou Le Télégramme pour un article "comment changer de syndic à Rennes" avec mention du site
+Créer un profil LinkedIn pour le projet avec publications régulières sur la copropriété à Rennes
+
+Pourquoi ça compte : un LLM qui voit "syndic-rennes.fr" mentionné sur Pages Jaunes, un forum, et un article de presse locale accordera beaucoup plus de poids à ce domaine qu'un site isolé.
+
+Règle n°6 — Rédaction orientée LLM
+Règles d'écriture à appliquer sur tout le contenu du site :
+ÉviterPréférerPhrases d'intro marketingRéponse dans la première phrase"Il est important de noter que..."La réponse directeParagraphes > 4 lignesParagraphes courts, un seul point chacunJargon sans explicationTerme + définition immédiate"Contactez-nous pour en savoir plus"L'information complète sur la page
+Règle d'or : chaque page doit être auto-suffisante. Un LLM qui lit la page doit pouvoir répondre à la question de l'utilisateur sans avoir besoin d'autres pages.
+
+Checklist GEO par page
+Avant de publier chaque page, vérifier :
+
+Réponse directe dans les 150 premiers mots (composant <DirectAnswer>)
+Pas d'intro marketing avant la réponse
+Au moins 1 chiffre ou référence légale concrète
+Schema FAQPage si la page contient des questions/réponses
+Balisage speakable en JSON-LD
+Paragraphes courts (max 4 lignes)
+Page auto-suffisante (pas de "voir notre autre page pour...")
