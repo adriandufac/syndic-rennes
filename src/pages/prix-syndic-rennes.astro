@@ -1,0 +1,202 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeadForm from '../components/LeadForm.astro';
+import CTABanner from '../components/CTABanner.astro';
+import FAQ from '../components/FAQ.astro';
+import PriceTable from '../components/PriceTable.astro';
+
+const faqItems = [
+  {
+    question: "Quel est le prix moyen d'un syndic à Rennes en 2025 ?",
+    answer: "En 2025, le prix moyen d'un syndic professionnel à Rennes se situe entre 120 et 280 euros par lot et par an pour une copropriété de taille moyenne (10 à 30 lots). Ce tarif couvre le forfait de base, c'est-à-dire la gestion courante de la copropriété. Les petites copropriétés de moins de 10 lots paient généralement plus cher par lot (280 à 420 euros) en raison des coûts fixes incompressibles. Notre service de mise en relation vous permet de recevoir des propositions adaptées à votre situation."
+  },
+  {
+    question: "Que comprend le forfait de base d'un syndic ?",
+    answer: "Le forfait de base (ou honoraires de gestion courante) inclut la tenue de la comptabilité, la préparation et la tenue de l'assemblée générale annuelle, la gestion des contrats d'entretien, le suivi des sinistres courants, la conservation des archives et la représentation légale du syndicat des copropriétaires. Les prestations hors forfait (AG extraordinaires, travaux importants, contentieux) sont facturées en supplément."
+  },
+  {
+    question: "Pourquoi les petites copropriétés paient-elles plus cher par lot ?",
+    answer: "Les syndics supportent des coûts fixes incompressibles quelle que soit la taille de la copropriété : tenue de l'AG, comptabilité, assurances, archivage. Dans une petite copropriété de moins de 10 lots, ces coûts sont répartis sur un nombre réduit de copropriétaires, ce qui augmente mécaniquement le prix par lot. C'est pourquoi il est particulièrement intéressant pour les petites copropriétés de se faire accompagner pour trouver un syndic au juste prix."
+  },
+  {
+    question: "Comment savoir si mon syndic est trop cher ?",
+    answer: "Pour évaluer si vos honoraires de syndic sont compétitifs, comparez-les aux moyennes du marché rennais selon la taille de votre copropriété. Un écart de plus de 20% au-dessus de la fourchette moyenne doit vous alerter. Vérifiez également le détail des prestations incluses : un forfait apparemment bas peut cacher de nombreuses prestations particulières facturées en supplément. Notre service de mise en relation gratuit vous permet d'être contacté par des syndics adaptés à votre copropriété, pour y voir plus clair."
+  },
+  {
+    question: "Les honoraires de syndic sont-ils négociables ?",
+    answer: "Oui, les honoraires de syndic sont libres et donc négociables. La mise en concurrence lors de l'assemblée générale est le levier le plus efficace pour obtenir un tarif compétitif. Depuis la loi ALUR de 2014, le contrat de syndic est encadré par un contrat-type qui distingue clairement le forfait de base des prestations particulières, ce qui facilite l'évaluation des propositions reçues."
+  },
+  {
+    question: "Est-il possible de réduire ses charges de syndic sans changer de syndic ?",
+    answer: "Oui, plusieurs leviers existent. Vous pouvez renégocier le contrat actuel en vous appuyant sur des propositions concurrentes obtenues via une mise en relation, demander la suppression de prestations particulières inutiles, mutualiser certains contrats d'entretien ou encore proposer la dématérialisation des convocations pour réduire les frais postaux. Le conseil syndical joue un rôle clé dans cette optimisation."
+  }
+];
+---
+
+<BaseLayout
+  title="Prix d'un Syndic à Rennes en 2025 : Tarifs par Taille de Copropriété"
+  description="Combien coûte un syndic à Rennes ? Tarifs détaillés selon la taille de votre copropriété. Comprenez votre facture et comparez."
+  canonical="https://syndic-rennes.fr/prix-syndic-rennes"
+  faqSchema={faqItems}
+>
+  <!-- Hero -->
+  <section class="bg-primary text-white py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="font-heading text-3xl md:text-5xl font-extrabold mb-4 leading-tight">
+        Prix d'un syndic à Rennes : <span class="text-accent">tarifs 2025</span>
+      </h1>
+      <p class="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+        Combien coûte réellement un syndic de copropriété à Rennes ? Découvrez les tarifs détaillés et trouvez un syndic adapté à votre copropriété.
+      </p>
+      <a
+        href="#formulaire"
+        data-source="hero-prix"
+        class="inline-block bg-accent hover:bg-orange-500 text-white font-heading font-bold px-8 py-4 rounded-xl text-lg transition-colors shadow-lg hover:shadow-xl"
+      >
+        Des syndics adaptés vous contactent &rarr;
+      </a>
+      <p class="text-white/50 text-sm mt-3">Gratuit &middot; Sans engagement &middot; Réponse sous 48h</p>
+    </div>
+  </section>
+
+  <!-- Intro transparence tarifaire -->
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+      Tarifs des syndics à Rennes : ce que vous devez savoir
+    </h2>
+    <p class="text-text/80 leading-relaxed mb-4">
+      Le prix d'un syndic de copropriété à Rennes varie considérablement selon la taille de votre immeuble, les services inclus dans le contrat et le positionnement du cabinet. En 2025, les copropriétaires rennais paient en moyenne entre 120 et 280 euros par lot et par an pour une gestion courante standard. Pourtant, des écarts de prix de 30 à 50% existent entre les syndics pour des prestations équivalentes.
+    </p>
+    <p class="text-text/80 leading-relaxed mb-4">
+      Cette disparité tarifaire s'explique par plusieurs facteurs : la taille du cabinet, son ancienneté, le nombre de copropriétés gérées ou encore sa politique commerciale. Certains syndics pratiquent des forfaits de base attractifs mais compensent par des prestations particulières facturées au prix fort. D'autres proposent un tarif global plus élevé mais avec très peu de suppléments.
+    </p>
+    <p class="text-text/80 leading-relaxed">
+      C'est pourquoi la transparence tarifaire est essentielle. Nous avons analysé le marché rennais pour vous donner une vision claire des prix pratiqués en 2025, afin de vous aider à évaluer si votre syndic actuel est compétitif. Et si vous souhaitez explorer d'autres options, notre service de mise en relation vous connecte avec des syndics adaptés à votre copropriété.
+    </p>
+  </section>
+
+  <!-- Tableau des prix -->
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6 text-center">
+      Grille tarifaire des syndics à Rennes en 2025
+    </h2>
+    <p class="text-text/70 text-center mb-8 max-w-2xl mx-auto">
+      Tarifs moyens constatés par lot et par an, hors prestations particulières. Ces fourchettes sont basées sur les offres des syndics professionnels implantés à Rennes et en Ille-et-Vilaine.
+    </p>
+    <PriceTable />
+  </section>
+
+  <!-- Comprendre les honoraires -->
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+      Comprendre les honoraires d'un syndic
+    </h2>
+    <div class="space-y-6">
+      <div class="bg-white rounded-2xl shadow-md p-6">
+        <h3 class="font-heading font-bold text-primary text-lg mb-3">Le forfait de base (gestion courante)</h3>
+        <p class="text-text/80 leading-relaxed mb-3">
+          Le forfait de base constitue l'essentiel des honoraires de votre syndic. Il couvre toutes les missions de gestion courante de la copropriété : tenue de la comptabilité du syndicat, préparation et tenue de l'assemblée générale ordinaire annuelle, gestion et suivi des contrats d'entretien courant (ascenseur, chauffage, nettoyage), conservation des archives de la copropriété et représentation légale du syndicat.
+        </p>
+        <p class="text-text/80 leading-relaxed">
+          Depuis la loi ALUR de 2014 et le décret du 26 mars 2015, le contrat-type de syndic liste précisément les missions qui doivent être incluses dans le forfait de base. Ce cadre réglementaire facilite l'évaluation des propositions des différents syndics, car tous doivent couvrir les mêmes prestations minimales dans leur forfait.
+        </p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-md p-6">
+        <h3 class="font-heading font-bold text-primary text-lg mb-3">Les prestations particulières (hors forfait)</h3>
+        <p class="text-text/80 leading-relaxed mb-3">
+          En dehors du forfait de base, le syndic peut facturer des prestations particulières pour des missions ponctuelles ou exceptionnelles. Il s'agit notamment de la tenue d'assemblées générales extraordinaires, du suivi de gros travaux (ravalement, toiture, mise aux normes), de la gestion de contentieux avec des copropriétaires débiteurs, des états datés en cas de vente d'un lot ou encore de la gestion de sinistres complexes.
+        </p>
+        <p class="text-text/80 leading-relaxed">
+          Ces prestations particulières peuvent représenter un surcoût significatif, parfois 20 à 40% du forfait de base selon les années. C'est un point de vigilance majeur lors du choix d'un syndic : un forfait bas assorti de prestations particulières très élevées peut au final coûter plus cher qu'un syndic au forfait plus élevé mais aux suppléments raisonnables.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prestations hors forfait -->
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+      Les prestations hors forfait à surveiller
+    </h2>
+    <p class="text-text/80 leading-relaxed mb-6">
+      Au-delà du forfait de base, certaines prestations facturées en supplément peuvent alourdir considérablement la facture annuelle de votre copropriété. Voici les postes hors forfait les plus courants et les montants généralement constatés à Rennes.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-white rounded-2xl shadow-md p-6 border-l-4 border-accent">
+        <h3 class="font-heading font-bold text-primary mb-2">Assemblées générales extraordinaires</h3>
+        <p class="text-text/80 text-sm leading-relaxed">
+          Chaque AG extraordinaire est facturée entre 300 et 800 euros selon les cabinets. Travaux urgents, changement de prestataire, litige entre copropriétaires : les raisons de convoquer une AG hors calendrier sont fréquentes. Certains syndics incluent une AG extraordinaire dans le forfait -- un point à vérifier avant de signer.
+        </p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-md p-6 border-l-4 border-accent">
+        <h3 class="font-heading font-bold text-primary mb-2">Suivi de travaux importants</h3>
+        <p class="text-text/80 text-sm leading-relaxed">
+          Pour les travaux de ravalement, réfection de toiture ou mise aux normes, le syndic facture généralement des honoraires de suivi représentant 2 à 4% du montant HT des travaux. Sur un ravalement à 100 000 euros, cela représente 2 000 à 4 000 euros de frais supplémentaires. Négociez ce pourcentage avant le lancement des travaux.
+        </p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-md p-6 border-l-4 border-accent">
+        <h3 class="font-heading font-bold text-primary mb-2">Contentieux et recouvrement</h3>
+        <p class="text-text/80 text-sm leading-relaxed">
+          La gestion des impayés de charges et les procédures contentieuses (mises en demeure, assignations) sont facturées hors forfait. Comptez 50 à 150 euros par mise en demeure et des honoraires horaires de 80 à 150 euros pour le suivi de contentieux. Dans les copropriétés avec des impayés récurrents, ce poste peut devenir significatif.
+        </p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-md p-6 border-l-4 border-accent">
+        <h3 class="font-heading font-bold text-primary mb-2">États datés et mutations</h3>
+        <p class="text-text/80 text-sm leading-relaxed">
+          Lors de la vente d'un lot, le syndic produit un état daté (situation financière du lot) facturé au copropriétaire vendeur. Depuis le décret de 2020, le tarif est plafonné à 380 euros TTC. Cependant, certains syndics facturent en plus un "pré-état daté" ou des frais de mutation non encadrés. Vérifiez ces frais dans le contrat de syndic avant de signer.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Réduire les charges -->
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+      Comment réduire vos charges de syndic ?
+    </h2>
+    <p class="text-text/80 leading-relaxed mb-6">
+      Que vous souhaitiez changer de syndic ou simplement optimiser vos charges actuelles, plusieurs leviers concrets permettent de réaliser des économies significatives sur les honoraires de gestion de votre copropriété.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-white rounded-2xl shadow-md p-6">
+        <h3 class="font-heading font-bold text-primary mb-2">Se faire mettre en relation avec d'autres syndics</h3>
+        <p class="text-text/80 text-sm leading-relaxed">
+          La mise en concurrence est le levier le plus efficace. En étant mis en relation avec 2 à 3 syndics qualifiés, vous disposez d'une base de négociation solide. Même si vous ne changez pas de syndic, présenter des propositions concurrentes en AG incite votre syndic actuel à revoir ses tarifs. En moyenne, cette démarche permet d'économiser 15 à 30% sur les honoraires.
+        </p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-md p-6">
+        <h3 class="font-heading font-bold text-primary mb-2">Analyser les prestations particulières</h3>
+        <p class="text-text/80 text-sm leading-relaxed">
+          Passez en revue les factures de prestations particulières des 3 dernières années. Identifiez les prestations récurrentes qui pourraient être intégrées au forfait de base lors du renouvellement du contrat. Certains syndics facturent des frais pour des prestations qui devraient être incluses dans le forfait selon le contrat-type légal.
+        </p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-md p-6">
+        <h3 class="font-heading font-bold text-primary mb-2">Opter pour la dématérialisation</h3>
+        <p class="text-text/80 text-sm leading-relaxed">
+          La dématérialisation des convocations d'AG, des procès-verbaux et de la correspondance courante permet de réduire significativement les frais postaux et de reprographie, qui peuvent représenter plusieurs centaines d'euros par an pour une copropriété de taille moyenne. La plupart des syndics rennais proposent désormais un extranet copropriétaire.
+        </p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-md p-6">
+        <h3 class="font-heading font-bold text-primary mb-2">Renégocier les contrats d'entretien</h3>
+        <p class="text-text/80 text-sm leading-relaxed">
+          Demandez à votre syndic (ou à votre conseil syndical) de renégocier régulièrement les contrats d'entretien courant : nettoyage, espaces verts, ascenseur, chauffage. La mise en concurrence des prestataires est un droit du conseil syndical et permet souvent de réduire les charges générales de la copropriété de 10 à 20%.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <div class="max-w-4xl mx-auto px-4">
+    <CTABanner source="prix-mid" />
+  </div>
+
+  <!-- FAQ -->
+  <div class="max-w-4xl mx-auto px-4">
+    <FAQ items={faqItems} />
+  </div>
+
+  <!-- Formulaire -->
+  <div class="max-w-4xl mx-auto px-4 py-12">
+    <LeadForm />
+  </div>
+</BaseLayout>

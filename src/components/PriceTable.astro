@@ -1,0 +1,29 @@
+---
+const prices = [
+  { size: 'Moins de 10 lots', price: '280 – 420 €', included: 'Gestion courante basique' },
+  { size: '10 à 30 lots', price: '180 – 280 €', included: 'Gestion + assemblée générale' },
+  { size: '30 à 100 lots', price: '120 – 200 €', included: 'Gestion complète' },
+  { size: 'Plus de 100 lots', price: '80 – 150 €', included: 'Gestion complète + outils dédiés' },
+];
+---
+
+<div class="overflow-x-auto">
+  <table class="w-full bg-white rounded-2xl shadow-lg overflow-hidden text-sm">
+    <thead>
+      <tr class="bg-primary text-white">
+        <th class="px-6 py-4 text-left font-heading font-semibold">Taille copropriété</th>
+        <th class="px-6 py-4 text-left font-heading font-semibold">Prix moyen / lot / an</th>
+        <th class="px-6 py-4 text-left font-heading font-semibold">Ce qui est inclus</th>
+      </tr>
+    </thead>
+    <tbody>
+      {prices.map((row, i) => (
+        <tr class={i % 2 === 0 ? 'bg-bg' : 'bg-white'}>
+          <td class="px-6 py-4 font-medium">{row.size}</td>
+          <td class="px-6 py-4 font-semibold text-primary">{row.price}</td>
+          <td class="px-6 py-4 text-text/70">{row.included}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

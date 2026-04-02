@@ -1,0 +1,101 @@
+<section id="formulaire" class="bg-white rounded-2xl shadow-lg p-6 md:p-10 max-w-2xl mx-auto">
+  <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary text-center mb-2">
+    Transmettez votre demande à nos syndics partenaires
+  </h2>
+  <p class="text-center text-text/70 mb-8">
+    Décrivez votre copropriété en 2 minutes. Nous transmettons votre demande aux syndics partenaires susceptibles de correspondre à votre profil.
+  </p>
+
+  <form
+    name="lead-syndic"
+    method="POST"
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+    action="/merci"
+    class="space-y-4"
+  >
+    <input type="hidden" name="form-name" value="lead-syndic" />
+    <p hidden><input name="bot-field" /></p>
+
+    <!-- Profil de la copropriété -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <select name="nb_lots" required class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm bg-white focus:ring-2 focus:ring-accent focus:border-accent outline-none">
+        <option value="">Nombre de lots *</option>
+        <option value="moins_10">Moins de 10 lots</option>
+        <option value="10_30">10 à 30 lots</option>
+        <option value="30_100">30 à 100 lots</option>
+        <option value="plus_100">Plus de 100 lots</option>
+      </select>
+
+      <select name="type_immeuble" required class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm bg-white focus:ring-2 focus:ring-accent focus:border-accent outline-none">
+        <option value="">Type de bien *</option>
+        <option value="residentiel">Résidentiel</option>
+        <option value="mixte">Mixte (hab. + commerce)</option>
+        <option value="neuf">Immeuble neuf</option>
+      </select>
+
+      <select name="fin_contrat" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm bg-white focus:ring-2 focus:ring-accent focus:border-accent outline-none">
+        <option value="">Fin de contrat actuel (optionnel)</option>
+        <option value="moins_3mois">Dans moins de 3 mois</option>
+        <option value="3_6mois">Dans 3 à 6 mois</option>
+        <option value="plus_6mois">Dans plus de 6 mois</option>
+        <option value="pas_de_syndic">Pas encore de syndic</option>
+      </select>
+
+      <select name="qualite" required class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm bg-white focus:ring-2 focus:ring-accent focus:border-accent outline-none">
+        <option value="">Votre rôle *</option>
+        <option value="conseil_syndical">Membre du conseil syndical</option>
+        <option value="coproprietaire">Copropriétaire</option>
+        <option value="autre">Autre</option>
+      </select>
+    </div>
+
+    <!-- Contact -->
+    <div class="border-t border-gray-100 pt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+      <input
+        type="text"
+        name="ville"
+        value="Rennes"
+        readonly
+        class="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm bg-gray-50 text-text/60"
+      />
+      <input
+        type="text"
+        name="nom"
+        placeholder="Votre nom (optionnel)"
+        class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-accent focus:border-accent outline-none"
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="Votre email *"
+        required
+        class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-accent focus:border-accent outline-none"
+      />
+      <input
+        type="tel"
+        name="telephone"
+        placeholder="Votre téléphone *"
+        required
+        class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-accent focus:border-accent outline-none"
+      />
+    </div>
+
+    <!-- RGPD -->
+    <label class="flex items-start gap-3 text-xs text-text/70 cursor-pointer">
+      <input type="checkbox" name="rgpd" required class="mt-0.5 accent-accent" />
+      <span>
+        J'accepte que ma demande soit transmise à des syndics partenaires susceptibles de me contacter.
+        <a href="/mentions-legales" class="underline hover:text-primary">Politique de confidentialité</a>
+      </span>
+    </label>
+
+    <button
+      type="submit"
+      class="w-full bg-accent hover:bg-orange-500 text-white font-heading font-bold text-lg py-4 rounded-xl transition-colors shadow-md hover:shadow-lg"
+    >
+      Envoyer ma demande &rarr;
+    </button>
+    <p class="text-center text-xs text-text/50">Gratuit &middot; Sans engagement &middot; Nous faisons notre possible pour vous orienter sous 48h</p>
+  </form>
+</section>

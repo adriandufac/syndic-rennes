@@ -1,0 +1,253 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeadForm from '../components/LeadForm.astro';
+import CTABanner from '../components/CTABanner.astro';
+import FAQ from '../components/FAQ.astro';
+
+const faqItems = [
+  {
+    question: "Peut-on changer de syndic avant la fin du contrat ?",
+    answer: "Oui, il est possible de révoquer un syndic avant la fin de son mandat, mais uniquement pour un motif légitime (faute de gestion, manquement grave aux obligations). La révocation doit être votée en assemblée générale à la majorité absolue de l'article 25. En l'absence de faute, il est préférable d'attendre l'échéance du contrat pour éviter tout litige."
+  },
+  {
+    question: "Quelle majorité est nécessaire pour changer de syndic ?",
+    answer: "Le changement de syndic se vote à la majorité absolue, définie par l'article 25 de la loi du 10 juillet 1965. Cela signifie qu'il faut recueillir plus de la moitié des voix de tous les copropriétaires (présents, représentés et absents). Si cette majorité n'est pas atteinte mais que le projet recueille au moins un tiers des voix, un second vote à la majorité simple (article 24) peut être organisé immédiatement."
+  },
+  {
+    question: "Combien de temps prend un changement de syndic ?",
+    answer: "En pratique, comptez entre 3 et 6 mois entre la décision de changer et la prise de fonction du nouveau syndic. Ce délai comprend la mise en concurrence (4 à 8 semaines), la convocation de l'AG (au moins 21 jours avant), le vote, puis la période de transition pendant laquelle l'ancien syndic transmet les documents et les fonds au nouveau."
+  },
+  {
+    question: "L'ancien syndic peut-il refuser de transmettre les documents ?",
+    answer: "Non. La loi ALUR impose à l'ancien syndic de transmettre l'ensemble des documents et des fonds de la copropriété au nouveau syndic dans un délai maximum d'un mois après la fin de ses fonctions. En cas de retard, le nouveau syndic peut mettre en demeure l'ancien par lettre recommandée, et des pénalités financières peuvent s'appliquer."
+  },
+  {
+    question: "Combien coûte un changement de syndic ?",
+    answer: "Le changement de syndic en lui-même ne génère pas de frais directs pour la copropriété. Cependant, l'ancien syndic peut facturer des frais de transmission du dossier (encadrés par la loi). En pratique, les économies réalisées en changeant de syndic (souvent 15 à 30% sur les honoraires annuels) compensent largement ces frais de transition."
+  },
+  {
+    question: "Qui peut proposer un changement de syndic à Rennes ?",
+    answer: "Tout copropriétaire peut demander l'inscription du changement de syndic à l'ordre du jour de l'assemblée générale. Le conseil syndical joue souvent un rôle moteur dans cette démarche en organisant la mise en concurrence et en présentant les offres alternatives aux copropriétaires. À Rennes, notre service de mise en relation vous permet d'être contacté rapidement par des syndics locaux qualifiés."
+  }
+];
+
+const steps = [
+  {
+    number: 1,
+    title: "Vérifier la date de fin de contrat",
+    subtitle: "Article 18 de la loi Hoguet",
+    description: "Consultez votre contrat de syndic actuel pour identifier la date d'échéance. Depuis la loi ALUR, les contrats de syndic sont conclus pour une durée maximale de 3 ans. La mise en concurrence doit être inscrite à l'ordre du jour de l'assemblée générale qui précède l'échéance du contrat. Anticipez : commencez vos démarches au moins 6 mois avant la date de fin."
+  },
+  {
+    number: 2,
+    title: "Constituer un dossier de mise en concurrence",
+    subtitle: "Obligation légale depuis la loi ALUR",
+    description: "Le conseil syndical est chargé de mettre en concurrence plusieurs syndics. Préparez un dossier complet comprenant : les caractéristiques de votre copropriété (nombre de lots, équipements, budget prévisionnel), les procès-verbaux des dernières assemblées générales, et les éventuels travaux en cours ou prévus. Ce dossier permettra aux syndics candidats de formuler des offres précises."
+  },
+  {
+    number: 3,
+    title: "Obtenir des propositions de nouveaux syndics",
+    subtitle: "Sollicitez au moins 2 à 3 cabinets",
+    description: "Sollicitez plusieurs syndics professionnels implantés à Rennes pour obtenir des propositions détaillées. Étudiez non seulement les honoraires de base, mais aussi les prestations incluses, les frais annexes (frais de mutation, photocopies, états datés) et la qualité du service. Notre service de mise en relation vous permet d'être contacté par des syndics adaptés à votre copropriété."
+  },
+  {
+    number: 4,
+    title: "Inscrire le point à l'ordre du jour de l'AG",
+    subtitle: "Convocation au moins 21 jours avant",
+    description: "Le changement de syndic doit figurer à l'ordre du jour de l'assemblée générale. Tout copropriétaire peut demander cette inscription par lettre recommandée adressée au syndic en place. Les projets de contrats des syndics candidats doivent être joints à la convocation, afin que chaque copropriétaire puisse les étudier avant le vote."
+  },
+  {
+    number: 5,
+    title: "Voter le changement en assemblée générale",
+    subtitle: "Majorité absolue - Article 25",
+    description: "Le jour de l'AG, le changement de syndic est soumis au vote à la majorité absolue de l'article 25 (plus de la moitié des voix de tous les copropriétaires). Si cette majorité n'est pas atteinte mais que le projet obtient au moins un tiers des voix, un second vote à la majorité simple peut être organisé immédiatement lors de la même assemblée."
+  },
+  {
+    number: 6,
+    title: "Notification et transition vers le nouveau syndic",
+    subtitle: "Transmission sous 1 mois maximum",
+    description: "Une fois le vote acquis, l'ancien syndic est notifié par le président de séance. Il dispose alors d'un mois pour transmettre l'intégralité des documents et fonds de la copropriété au nouveau syndic. Ce dernier prend ses fonctions à la date fixée par l'assemblée générale et assure la continuité de la gestion de votre copropriété."
+  }
+];
+---
+
+<BaseLayout
+  title="Changer de Syndic à Rennes : Guide Complet Étape par Étape"
+  description="Vous voulez changer de syndic à Rennes ? Notre guide explique la procédure légale, les délais et les pièges à éviter. Plus simple que vous ne le pensez."
+  canonical="https://syndic-rennes.fr/changer-syndic-rennes"
+  faqSchema={faqItems}
+>
+  <!-- Hero -->
+  <section class="bg-primary text-white py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="font-heading text-3xl md:text-5xl font-extrabold mb-4 leading-tight">
+        Changer de syndic à Rennes : <span class="text-accent">guide complet</span>
+      </h1>
+      <p class="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+        Marre de votre syndic actuel ? La procédure de changement est plus simple que vous ne le pensez. Suivez nos 6 étapes et laissez-nous vous mettre en relation avec des syndics adaptés à Rennes.
+      </p>
+      <a
+        href="#formulaire"
+        data-source="hero-changer"
+        class="inline-block bg-accent hover:bg-orange-500 text-white font-heading font-bold px-8 py-4 rounded-xl text-lg transition-colors shadow-lg hover:shadow-xl"
+      >
+        Être mis en relation &rarr;
+      </a>
+      <p class="text-white/50 text-sm mt-3">Gratuit &middot; Sans engagement &middot; Réponse sous 48h</p>
+    </div>
+  </section>
+
+  <!-- Introduction -->
+  <section class="max-w-4xl mx-auto px-4 py-16">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+      Pourquoi changer de syndic à Rennes ?
+    </h2>
+    <div class="prose max-w-none text-text/80 space-y-4">
+      <p>
+        Chaque année, des milliers de copropriétés en France décident de changer de syndic. À Rennes, où le marché immobilier est dynamique et le parc de copropriétés en croissance constante, cette question se pose de plus en plus fréquemment. Les raisons sont multiples : honoraires trop élevés, manque de réactivité, opacité dans la gestion des comptes, travaux mal suivis ou encore absence de communication avec les copropriétaires.
+      </p>
+      <p>
+        La bonne nouvelle, c'est que la loi protège les copropriétaires. Depuis la loi ALUR de 2014, la mise en concurrence du syndic est obligatoire avant chaque renouvellement de mandat. Vous avez donc non seulement le droit, mais aussi le devoir de solliciter plusieurs syndics. Et contrairement aux idées reçues, la procédure est accessible à tous, même sans connaissances juridiques particulières.
+      </p>
+      <p>
+        Ce guide détaille les 6 étapes pour changer de syndic à Rennes en toute sérénité. De la vérification de votre contrat actuel jusqu'à la prise de fonction du nouveau syndic, nous vous accompagnons à chaque étape.
+      </p>
+    </div>
+  </section>
+
+  <!-- Étapes -->
+  <section class="max-w-4xl mx-auto px-4 pb-16">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary text-center mb-12">
+      Les 6 étapes pour changer de syndic
+    </h2>
+
+    <div class="relative">
+      <!-- Ligne verticale de timeline -->
+      <div class="hidden md:block absolute left-8 top-0 bottom-0 w-0.5 bg-primary/15"></div>
+
+      <div class="space-y-8">
+        {steps.map((step) => (
+          <Fragment>
+            <div class="relative flex items-start gap-6">
+              <!-- Numéro -->
+              <div class="flex-shrink-0 relative z-10 w-16 h-16 bg-primary text-white rounded-2xl flex items-center justify-center shadow-lg">
+                <span class="font-heading text-2xl font-extrabold">{step.number}</span>
+              </div>
+
+              <!-- Contenu de l'étape -->
+              <div class="flex-1 bg-white rounded-2xl shadow-md border border-gray-100 p-6 hover:shadow-lg transition-shadow">
+                <h3 class="font-heading text-lg md:text-xl font-bold text-primary mb-1">
+                  {step.title}
+                </h3>
+                <p class="text-accent font-heading text-sm font-semibold mb-3">
+                  {step.subtitle}
+                </p>
+                <p class="text-text/70 text-sm leading-relaxed">
+                  {step.description}
+                </p>
+              </div>
+            </div>
+
+            {/* CTA contextuel après l'étape 3 */}
+            {step.number === 3 && (
+              <div class="ml-0 md:ml-22 bg-accent/10 border-2 border-accent rounded-2xl p-6 text-center">
+                <p class="font-heading text-lg md:text-xl font-bold text-primary mb-2">
+                  On s'occupe de l'étape 3 pour vous
+                </p>
+                <p class="text-text/70 text-sm mb-4">
+                  Décrivez votre copropriété et les syndics adaptés vous contactent.
+                </p>
+                <a
+                  href="#formulaire"
+                  data-source="step3-contextual"
+                  class="inline-block bg-accent hover:bg-orange-500 text-white font-heading font-bold px-8 py-3 rounded-xl transition-colors shadow-md hover:shadow-lg text-lg"
+                >
+                  Des syndics adaptés vous contactent &rarr;
+                </a>
+                <p class="text-text/40 text-xs mt-3">Gratuit &middot; Sans engagement &middot; Réponse sous 48h</p>
+              </div>
+            )}
+          </Fragment>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA intermédiaire -->
+  <div class="max-w-4xl mx-auto px-4">
+    <CTABanner source="changer-mid" />
+  </div>
+
+  <!-- Pièges à éviter -->
+  <section class="max-w-4xl mx-auto px-4 py-16">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary text-center mb-10">
+      Les pièges à éviter lors d'un changement de syndic
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-white rounded-2xl shadow-md border-l-4 border-accent p-6">
+        <h3 class="font-heading font-bold text-primary mb-2">
+          &#9888; S'y prendre trop tard
+        </h3>
+        <p class="text-sm text-text/70 leading-relaxed">
+          Ne lancez pas la mise en concurrence au dernier moment. Il faut compter au moins 3 mois entre les premiers devis et l'assemblée générale. Si vous dépassez l'échéance du contrat sans avoir voté, le mandat du syndic en place sera automatiquement renouvelé.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-md border-l-4 border-accent p-6">
+        <h3 class="font-heading font-bold text-primary mb-2">
+          &#9888; Comparer uniquement sur le prix
+        </h3>
+        <p class="text-sm text-text/70 leading-relaxed">
+          Le tarif le plus bas n'est pas toujours le meilleur choix. Vérifiez les prestations incluses dans le forfait de base : nombre de visites, heures de présence en AG, gestion des sinistres. Un syndic moins cher mais qui facture chaque prestation en extra peut revenir plus cher au final.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-md border-l-4 border-accent p-6">
+        <h3 class="font-heading font-bold text-primary mb-2">
+          &#9888; Négliger la période de transition
+        </h3>
+        <p class="text-sm text-text/70 leading-relaxed">
+          La passation entre l'ancien et le nouveau syndic est une phase critique. Assurez-vous que tous les documents comptables, contrats fournisseurs et fonds de la copropriété sont bien transmis dans le délai légal d'un mois. Demandez au nouveau syndic un suivi de cette transition.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-md border-l-4 border-accent p-6">
+        <h3 class="font-heading font-bold text-primary mb-2">
+          &#9888; Ne pas impliquer le conseil syndical
+        </h3>
+        <p class="text-sm text-text/70 leading-relaxed">
+          Le conseil syndical est le relais indispensable entre les copropriétaires et le syndic. Son implication dans la mise en concurrence donne plus de crédibilité au projet et facilite le vote en assemblée générale. Informez et mobilisez les membres du conseil le plus tôt possible.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-md border-l-4 border-accent p-6">
+        <h3 class="font-heading font-bold text-primary mb-2">
+          &#9888; Oublier de préparer l'AG
+        </h3>
+        <p class="text-sm text-text/70 leading-relaxed">
+          Le jour de l'assemblée générale, soyez prêt. Assurez-vous d'avoir suffisamment de copropriétaires présents ou représentés pour atteindre la majorité absolue. Distribuez en amont un comparatif clair des offres reçues afin que chacun puisse voter en connaissance de cause.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-md border-l-4 border-accent p-6">
+        <h3 class="font-heading font-bold text-primary mb-2">
+          &#9888; Ne pas vérifier les garanties
+        </h3>
+        <p class="text-sm text-text/70 leading-relaxed">
+          Un syndic professionnel doit obligatoirement détenir une carte professionnelle, une assurance responsabilité civile et une garantie financière. À Rennes, vérifiez ces éléments auprès de la CCI Ille-et-Vilaine avant de soumettre une candidature au vote.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <div class="max-w-4xl mx-auto px-4">
+    <FAQ items={faqItems} />
+  </div>
+
+  <!-- Formulaire -->
+  <div class="max-w-4xl mx-auto px-4 py-12">
+    <LeadForm />
+  </div>
+</BaseLayout>

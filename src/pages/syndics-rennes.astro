@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeadForm from '../components/LeadForm.astro';
+import CTABanner from '../components/CTABanner.astro';
+import FAQ from '../components/FAQ.astro';
+import SyndicCard from '../components/SyndicCard.astro';
+import { syndics } from '../data/syndics';
+
+const faqItems = [
+  {
+    question: "Combien de syndics professionnels exercent à Rennes ?",
+    answer: "Le marché rennais compte plusieurs dizaines de cabinets de syndic, allant de grandes enseignes nationales à des cabinets indépendants locaux. Chaque type de structure présente des caractéristiques différentes en termes de taille de portefeuille, de moyens techniques et de proximité avec les copropriétaires.",
+  },
+  {
+    question: "Quelle est la différence entre un syndic indépendant et un réseau national ?",
+    answer: "Un syndic indépendant est généralement un cabinet local avec un nombre limité de copropriétés en gestion, ce qui peut favoriser la proximité et la réactivité. Un réseau national dispose de moyens techniques plus importants (plateformes digitales, services juridiques centralisés) mais le gestionnaire peut avoir un portefeuille plus large. Les cabinets régionaux se situent souvent entre les deux.",
+  },
+  {
+    question: "Comment vérifier qu'un syndic est habilité à exercer ?",
+    answer: "Tout syndic professionnel doit détenir une carte professionnelle délivrée par la Chambre de Commerce et d'Industrie (CCI), une garantie financière suffisante et une assurance responsabilité civile professionnelle. Vous pouvez vérifier ces éléments auprès de la CCI d'Ille-et-Vilaine ou demander directement au cabinet de vous fournir ces justificatifs.",
+  },
+  {
+    question: "Les tarifs affichés sont-ils définitifs ?",
+    answer: "Les fourchettes tarifaires présentées sur cette page sont des estimations indicatives basées sur les pratiques constatées sur le marché rennais. Le tarif réel dépend de nombreux facteurs : nombre de lots, état de l'immeuble, prestations demandées, ancienneté de la copropriété. Seul un devis personnalisé établi après étude de votre copropriété engage le syndic.",
+  },
+  {
+    question: "Comment savoir quel type de syndic correspond à ma copropriété ?",
+    answer: "Le choix dépend principalement de la taille de votre copropriété, de vos besoins spécifiques (rénovation, gestion courante, immeuble neuf) et de vos attentes en termes de proximité. Une petite copropriété de moins de 15 lots privilégiera souvent un cabinet indépendant ou régional, tandis qu'une grande copropriété de plus de 50 lots pourra bénéficier des moyens d'un réseau national.",
+  },
+  {
+    question: "Ce service de mise en relation est-il gratuit ?",
+    answer: "Oui, notre service est entièrement gratuit et sans engagement pour les copropriétaires. Vous décrivez votre copropriété via le formulaire, et nous vous orientons vers les syndics dont le profil correspond à votre situation. Vous restez libre de donner suite ou non aux propositions reçues.",
+  },
+];
+---
+
+<BaseLayout
+  title="Les Syndics de Copropriété à Rennes : Fiches et Informations"
+  description="Découvrez les syndics professionnels présents à Rennes : spécialités, zones d'intervention, fourchettes tarifaires. Informations factuelles pour vous aider à choisir."
+  canonical="https://syndic-rennes.fr/syndics-rennes"
+  faqSchema={faqItems}
+>
+  <!-- Hero -->
+  <section class="bg-primary text-white py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="font-heading text-3xl md:text-5xl font-extrabold mb-4 leading-tight">
+        Les syndics de copropriété à <span class="text-accent">Rennes</span>
+      </h1>
+      <p class="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+        Informations factuelles sur les cabinets syndics présents sur le marché rennais : spécialités, zones couvertes, fourchettes tarifaires.
+      </p>
+      <a
+        href="#formulaire"
+        data-source="hero-syndics"
+        class="inline-block bg-accent hover:bg-orange-500 text-white font-heading font-bold px-8 py-4 rounded-xl text-lg transition-colors shadow-lg hover:shadow-xl"
+      >
+        Trouver un syndic adapté à ma copropriété &rarr;
+      </a>
+    </div>
+  </section>
+
+  <!-- Intro : le marché rennais -->
+  <section class="max-w-4xl mx-auto px-4 py-16">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+      Le marché des syndics de copropriété à Rennes
+    </h2>
+    <div class="prose prose-lg text-text/80 space-y-4">
+      <p>
+        Rennes compte de nombreux cabinets syndics, reflétant la diversité de son parc immobilier. Entre les immeubles anciens du centre-ville, les résidences des années 1970 de Villejean ou Maurepas, et les programmes neufs de la ZAC EuroRennes ou de Baud-Chardonnet, les besoins en gestion de copropriété varient considérablement d'un immeuble à l'autre.
+      </p>
+      <p>
+        On retrouve sur le marché rennais trois grandes familles de syndics : les <strong>réseaux nationaux</strong> (Foncia, Citya, Nexity...) qui disposent de moyens techniques et juridiques importants, les <strong>cabinets régionaux</strong> ancrés en Bretagne avec une bonne connaissance du tissu local, et les <strong>cabinets indépendants</strong> qui misent sur la proximité et un portefeuille de taille maîtrisée.
+      </p>
+      <p>
+        Voici les informations objectives que nous avons rassemblées pour vous aider à comprendre les différences entre ces cabinets. Les données présentées sont factuelles : spécialités déclarées, zones d'intervention, fourchettes tarifaires constatées et profils de copropriétés auxquels chaque cabinet est le plus adapté.
+      </p>
+    </div>
+  </section>
+
+  <!-- Grille de SyndicCards -->
+  <section class="max-w-6xl mx-auto px-4 pb-16">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary text-center mb-10">
+      Les cabinets syndics présents à Rennes
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {syndics.map(s => (
+        <SyndicCard syndic={s} />
+      ))}
+    </div>
+    <p class="text-center text-sm text-text/50 mt-6">
+      * Les fourchettes tarifaires sont indicatives, exprimées en euros par lot et par an. Elles varient selon la taille, l'ancienneté et les caractéristiques de chaque copropriété. Seul un devis personnalisé fait foi.
+    </p>
+  </section>
+
+  <!-- Critères à regarder dans un contrat -->
+  <section class="max-w-4xl mx-auto px-4 py-16">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-8">
+      Les critères à regarder dans un contrat de syndic
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+        <h3 class="font-heading font-bold text-primary mb-3">Le périmètre du forfait annuel</h3>
+        <p class="text-sm text-text/70 leading-relaxed">
+          Le contrat type imposé par la loi ALUR distingue les prestations incluses dans le forfait de celles facturées en supplément. Vérifiez ce qui est couvert : nombre de visites de l'immeuble, assemblées générales, gestion courante, relances d'impayés. Un forfait apparemment bas peut cacher des honoraires annexes élevés.
+        </p>
+      </div>
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+        <h3 class="font-heading font-bold text-primary mb-3">Les honoraires hors forfait</h3>
+        <p class="text-sm text-text/70 leading-relaxed">
+          Certaines prestations sont systématiquement facturées en plus : état daté lors d'une vente, frais de mutation, suivi de gros travaux, tenue d'assemblées générales extraordinaires. Comparez ces tarifs d'un cabinet à l'autre, car les écarts peuvent être significatifs et peser sur le budget de la copropriété.
+        </p>
+      </div>
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+        <h3 class="font-heading font-bold text-primary mb-3">La taille du portefeuille du gestionnaire</h3>
+        <p class="text-sm text-text/70 leading-relaxed">
+          Un gestionnaire qui suit 20 copropriétés n'aura pas la même disponibilité que celui qui en gère 60. Demandez combien de copropriétés sont confiées à votre interlocuteur direct. C'est un indicateur concret de la réactivité que vous pouvez attendre au quotidien.
+        </p>
+      </div>
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+        <h3 class="font-heading font-bold text-primary mb-3">Les outils mis à disposition</h3>
+        <p class="text-sm text-text/70 leading-relaxed">
+          Extranet copropriétaire, application mobile, vote en AG à distance, dématérialisation des documents comptables : ces outils facilitent le suivi de votre copropriété. Tous les cabinets ne proposent pas le même niveau de digitalisation. Évaluez ce qui est important pour vous et vos copropriétaires.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA fort -->
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <div class="bg-primary text-white py-12 rounded-2xl text-center px-6">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold mb-4">
+        Vous ne savez pas lequel correspond à votre copropriété ?
+      </h2>
+      <p class="text-white/80 mb-8 max-w-2xl mx-auto text-lg">
+        Chaque copropriété a ses spécificités : taille, ancienneté, projets de travaux, budget. Décrivez votre situation, on vous oriente vers les syndics dont le profil est le plus adapté.
+      </p>
+      <a
+        href="#formulaire"
+        data-source="cta-syndics-orientation"
+        class="inline-block bg-accent hover:bg-orange-500 text-white font-heading font-bold px-8 py-4 rounded-xl text-lg transition-colors shadow-md hover:shadow-lg"
+      >
+        Décrire ma copropriété &rarr;
+      </a>
+      <p class="text-white/50 text-xs mt-4">Gratuit &middot; Sans engagement &middot; Réponse sous 48h</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <div class="max-w-4xl mx-auto px-4">
+    <FAQ items={faqItems} />
+  </div>
+
+  <!-- Formulaire -->
+  <div class="max-w-4xl mx-auto px-4 py-12">
+    <LeadForm />
+  </div>
+</BaseLayout>

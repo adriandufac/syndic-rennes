@@ -1,0 +1,331 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeadForm from '../components/LeadForm.astro';
+import CTABanner from '../components/CTABanner.astro';
+import FAQ from '../components/FAQ.astro';
+
+const faqItems = [
+  {
+    question: "Un syndic bénévole est-il rémunéré ?",
+    answer: "Par défaut, le syndic bénévole n'est pas rémunéré. Cependant, l'assemblée générale peut voter une indemnité compensatrice pour couvrir le temps passé et les frais engagés. Cette indemnité doit être approuvée à la majorité simple (article 24) et son montant reste libre, mais il doit rester raisonnable et proportionné à la taille de la copropriété."
+  },
+  {
+    question: "Quelles sont les responsabilités juridiques du syndic bénévole ?",
+    answer: "Le syndic bénévole engage sa responsabilité civile au même titre qu'un syndic professionnel. Il est responsable de la bonne gestion de la copropriété, du respect des décisions de l'assemblée générale, de la tenue des comptes et de l'entretien de l'immeuble. En cas de faute de gestion, il peut être tenu personnellement responsable des préjudices causés à la copropriété. C'est pourquoi une assurance responsabilité civile est indispensable."
+  },
+  {
+    question: "Faut-il une carte professionnelle pour être syndic bénévole ?",
+    answer: "Non, le syndic bénévole n'a pas besoin de carte professionnelle (carte T). C'est l'un des avantages de ce statut : tout copropriétaire de l'immeuble peut être élu syndic bénévole par l'assemblée générale. En revanche, il doit respecter les mêmes obligations légales qu'un syndic professionnel en matière de gestion et de comptabilité."
+  },
+  {
+    question: "Comment passer d'un syndic bénévole à un syndic professionnel ?",
+    answer: "Pour remplacer un syndic bénévole par un professionnel, il faut inscrire le changement à l'ordre du jour de l'assemblée générale. Le vote se fait à la majorité absolue (article 25 de la loi de 1965). Il est recommandé de solliciter plusieurs propositions de syndics professionnels avant l'AG pour permettre aux copropriétaires d'évaluer les offres. Notre service gratuit de mise en relation vous met en contact avec des syndics qualifiés à Rennes, adaptés à votre copropriété."
+  },
+  {
+    question: "Le syndic bénévole doit-il ouvrir un compte bancaire séparé ?",
+    answer: "Oui, depuis la loi ALUR de 2014, le syndic bénévole est tenu d'ouvrir un compte bancaire séparé au nom du syndicat des copropriétaires. Ce compte doit être distinct de ses comptes personnels. Cette obligation s'applique sans exception et sans dispense possible, quelle que soit la taille de la copropriété. Le non-respect de cette obligation peut engager la responsabilité du syndic bénévole."
+  },
+  {
+    question: "Combien de temps dure le mandat d'un syndic bénévole à Rennes ?",
+    answer: "Le mandat du syndic bénévole est fixé par l'assemblée générale et ne peut pas excéder 3 ans. En pratique, la plupart des copropriétés rennaises votent des mandats de 1 à 2 ans, renouvelables. Le renouvellement doit être voté en AG à la majorité absolue (article 25). Le syndic bénévole peut également démissionner en cours de mandat, sous réserve de respecter un préavis raisonnable."
+  }
+];
+---
+
+<BaseLayout
+  title="Syndic Bénévole à Rennes : Avantages, Risques et Obligations Légales"
+  description="Le syndic bénévole à Rennes : est-ce adapté à votre copropriété ? Obligations légales, avantages réels et limites pratiques expliqués clairement."
+  canonical="https://syndic-rennes.fr/syndic-benevole-rennes"
+  faqSchema={faqItems}
+>
+  <!-- Hero -->
+  <section class="bg-primary text-white py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="font-heading text-3xl md:text-5xl font-extrabold mb-4 leading-tight">
+        Syndic bénévole à Rennes : la bonne solution ?
+      </h1>
+      <p class="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+        Découvrez les avantages, les limites et les obligations légales du syndic bénévole. Faites le bon choix pour votre copropriété rennaise.
+      </p>
+      <a
+        href="#formulaire"
+        data-source="hero-benevole"
+        class="inline-block bg-accent hover:bg-orange-500 text-white font-heading font-bold px-8 py-4 rounded-xl text-lg transition-colors shadow-lg hover:shadow-xl"
+      >
+        Être mis en relation avec un syndic professionnel &rarr;
+      </a>
+      <p class="text-white/50 text-sm mt-3">Gratuit &middot; Sans engagement &middot; Réponse sous 48h</p>
+    </div>
+  </section>
+
+  <!-- Qu'est-ce qu'un syndic bénévole ? -->
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+      Qu'est-ce qu'un syndic bénévole ?
+    </h2>
+    <div class="space-y-4 text-text/80 leading-relaxed">
+      <p>
+        Un syndic bénévole est un copropriétaire qui accepte de prendre en charge la gestion de sa copropriété, sans faire appel à un cabinet professionnel. Il est élu par l'assemblée générale des copropriétaires à la majorité absolue (article 25 de la loi du 10 juillet 1965) et assume l'ensemble des missions normalement dévolues à un syndic professionnel.
+      </p>
+      <p>
+        À Rennes, cette solution est particulièrement répandue dans les petites copropriétés de moins de 10 lots, notamment dans les quartiers résidentiels comme Sainte-Thérèse, Thabor ou Villejean. Avec la hausse continue des honoraires de syndics professionnels ces dernières années, de plus en plus de copropriétés rennaises s'interrogent sur cette alternative.
+      </p>
+      <p>
+        Le syndic bénévole assure les mêmes fonctions que son homologue professionnel : il convoque et tient les assemblées générales, exécute les décisions votées, gère les finances de la copropriété, souscrit les assurances nécessaires, veille à l'entretien de l'immeuble et représente le syndicat des copropriétaires dans tous les actes civils. La différence essentielle réside dans le fait qu'il s'agit d'un copropriétaire de l'immeuble qui exerce cette mission de manière volontaire, généralement sans rémunération ou contre une indemnité modeste votée en AG.
+      </p>
+    </div>
+  </section>
+
+  <!-- Avantages vs Inconvénients -->
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary text-center mb-10">
+      Avantages et inconvénients du syndic bénévole
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Avantages -->
+      <div class="bg-white rounded-2xl shadow-lg p-6">
+        <h3 class="font-heading text-xl font-bold text-green-700 mb-5 flex items-center gap-2">
+          <span class="text-2xl">&#9989;</span> Les avantages
+        </h3>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <span class="text-green-600 font-bold mt-0.5">&#10003;</span>
+            <div>
+              <strong class="text-text">Économies significatives</strong>
+              <p class="text-sm text-text/70 mt-1">En supprimant les honoraires du syndic professionnel, une copropriété de 10 lots à Rennes peut économiser entre 1 800 et 4 200 euros par an. Ces économies peuvent être réaffectées à l'entretien de l'immeuble ou à la constitution d'un fonds de travaux.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-green-600 font-bold mt-0.5">&#10003;</span>
+            <div>
+              <strong class="text-text">Proximité et réactivité</strong>
+              <p class="text-sm text-text/70 mt-1">Le syndic bénévole vit dans l'immeuble. Il connaît les lieux, les résidents et peut intervenir rapidement en cas de problème. Plus besoin d'attendre des jours pour obtenir une réponse : un dégât des eaux, une panne d'ascenseur ou un problème de chauffage sont traités sans délai.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-green-600 font-bold mt-0.5">&#10003;</span>
+            <div>
+              <strong class="text-text">Connaissance approfondie de l'immeuble</strong>
+              <p class="text-sm text-text/70 mt-1">En tant que résident, le syndic bénévole connaît parfaitement l'état de l'immeuble, son historique de travaux et les besoins spécifiques de la copropriété. Cette connaissance du terrain permet des décisions plus pertinentes et mieux adaptées.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-green-600 font-bold mt-0.5">&#10003;</span>
+            <div>
+              <strong class="text-text">Transparence totale</strong>
+              <p class="text-sm text-text/70 mt-1">Les copropriétaires ont un accès direct à la personne qui gère leur immeuble. Les comptes sont plus lisibles, les décisions plus transparentes et la communication plus fluide qu'avec un cabinet qui gère des dizaines de copropriétés simultanément.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Inconvénients -->
+      <div class="bg-white rounded-2xl shadow-lg p-6">
+        <h3 class="font-heading text-xl font-bold text-red-700 mb-5 flex items-center gap-2">
+          <span class="text-2xl">&#10060;</span> Les inconvénients
+        </h3>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <span class="text-red-600 font-bold mt-0.5">&#10007;</span>
+            <div>
+              <strong class="text-text">Charge de travail importante</strong>
+              <p class="text-sm text-text/70 mt-1">Gérer une copropriété demande du temps : comptabilité, suivi des prestataires, courriers, convocations d'AG, gestion des sinistres... Selon la taille de l'immeuble, comptez 5 à 15 heures par mois. Cette charge peut devenir pesante sur la durée, surtout si le syndic bénévole a une activité professionnelle à côté.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-red-600 font-bold mt-0.5">&#10007;</span>
+            <div>
+              <strong class="text-text">Responsabilité juridique personnelle</strong>
+              <p class="text-sm text-text/70 mt-1">Le syndic bénévole engage sa responsabilité civile, voire pénale, au même titre qu'un professionnel. En cas de faute de gestion, de manquement aux obligations de sécurité ou de défaut d'assurance, il peut être poursuivi personnellement par les copropriétaires ou des tiers.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-red-600 font-bold mt-0.5">&#10007;</span>
+            <div>
+              <strong class="text-text">Manque d'expertise technique et juridique</strong>
+              <p class="text-sm text-text/70 mt-1">La réglementation de la copropriété est complexe et évolue régulièrement (loi ALUR, loi ELAN, plan pluriannuel de travaux...). Sans formation spécifique, le syndic bénévole peut commettre des erreurs de gestion, de comptabilité ou de procédure qui coûteront cher à la copropriété.</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-red-600 font-bold mt-0.5">&#10007;</span>
+            <div>
+              <strong class="text-text">Risque de conflits entre voisins</strong>
+              <p class="text-sm text-text/70 mt-1">Gérer l'argent de ses voisins et prendre des décisions qui impactent leur quotidien peut créer des tensions. Les désaccords sur les travaux, les charges ou la gestion des parties communes peuvent détériorer les relations de voisinage et rendre la vie dans l'immeuble difficile.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Obligations légales -->
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+      Les obligations légales du syndic bénévole
+    </h2>
+    <div class="space-y-4 text-text/80 leading-relaxed mb-8">
+      <p>
+        Contrairement à une idée reçue, le syndic bénévole est soumis aux mêmes obligations légales qu'un syndic professionnel. La loi ne fait aucune distinction entre les deux statuts en matière de responsabilités et de devoirs envers la copropriété. Voici les principales obligations à respecter :
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-white rounded-2xl shadow-lg p-6">
+        <h3 class="font-heading font-bold text-primary mb-3">Compte bancaire séparé</h3>
+        <p class="text-sm text-text/70 leading-relaxed">
+          Depuis la loi ALUR (2014), le syndic bénévole doit obligatoirement ouvrir un compte bancaire séparé au nom du syndicat des copropriétaires. Ce compte doit être distinct de tous ses comptes personnels. Aucune dispense n'est possible, quelle que soit la taille de la copropriété. Les fonds de la copropriété ne doivent jamais transiter par un compte personnel.
+        </p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-lg p-6">
+        <h3 class="font-heading font-bold text-primary mb-3">Assurance responsabilité civile</h3>
+        <p class="text-sm text-text/70 leading-relaxed">
+          Le syndic bénévole doit souscrire une assurance responsabilité civile couvrant ses activités de gestion de la copropriété. Cette assurance est indispensable pour le protéger en cas de mise en cause. Son coût est généralement compris entre 150 et 300 euros par an et peut être pris en charge par la copropriété sur décision de l'assemblée générale.
+        </p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-lg p-6">
+        <h3 class="font-heading font-bold text-primary mb-3">Carnet d'entretien de l'immeuble</h3>
+        <p class="text-sm text-text/70 leading-relaxed">
+          Le syndic bénévole est tenu d'établir et de mettre à jour le carnet d'entretien de l'immeuble. Ce document recense l'ensemble des travaux réalisés, les contrats d'entretien en cours, les équipements communs et leur date de mise en service. Il doit être accessible à tout copropriétaire qui en fait la demande et transmis lors de toute mutation de lot.
+        </p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-lg p-6">
+        <h3 class="font-heading font-bold text-primary mb-3">Fiche synthétique et comptabilité</h3>
+        <p class="text-sm text-text/70 leading-relaxed">
+          Le syndic bénévole doit établir une fiche synthétique de la copropriété, regroupant les données financières et techniques essentielles. Il doit également tenir une comptabilité conforme aux normes applicables aux copropriétés, avec un budget prévisionnel voté annuellement en assemblée générale et des comptes annuels soumis à l'approbation des copropriétaires.
+        </p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-lg p-6">
+        <h3 class="font-heading font-bold text-primary mb-3">Immatriculation au registre national</h3>
+        <p class="text-sm text-text/70 leading-relaxed">
+          Toute copropriété doit être immatriculée au registre national des copropriétés, y compris celles gérées par un syndic bénévole. Le syndic est responsable de cette immatriculation et de sa mise à jour annuelle après chaque assemblée générale. Le non-respect de cette obligation peut entraîner des sanctions financières.
+        </p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-lg p-6">
+        <h3 class="font-heading font-bold text-primary mb-3">Plan pluriannuel de travaux</h3>
+        <p class="text-sm text-text/70 leading-relaxed">
+          Depuis la loi Climat et Résilience, les copropriétés de plus de 15 ans doivent adopter un plan pluriannuel de travaux (PPT). Le syndic bénévole doit piloter la réalisation du diagnostic technique global et proposer un plan de travaux sur 10 ans, voté en assemblée générale. Cette obligation se déploie progressivement selon la taille de la copropriété.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA intermédiaire -->
+  <div class="max-w-4xl mx-auto px-4">
+    <CTABanner source="benevole-mid" />
+  </div>
+
+  <!-- Syndic bénévole ou professionnel : comment choisir ? -->
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+      Syndic bénévole ou professionnel : comment choisir ?
+    </h2>
+    <div class="space-y-4 text-text/80 leading-relaxed mb-8">
+      <p>
+        Le choix entre un syndic bénévole et un syndic professionnel dépend de plusieurs critères propres à votre copropriété. Il n'existe pas de réponse universelle : ce qui fonctionne pour une petite résidence de 5 lots dans le quartier Sainte-Anne ne conviendra pas nécessairement à un immeuble de 40 appartements sur les quais de la Vilaine.
+      </p>
+      <p>
+        Pour vous aider à prendre la bonne décision, voici les principaux critères à évaluer avant de vous lancer dans la gestion bénévole ou de confier votre copropriété à un professionnel.
+      </p>
+    </div>
+
+    <div class="space-y-6">
+      <!-- Critère 1 : Taille -->
+      <div class="bg-white rounded-2xl shadow-lg p-6">
+        <h3 class="font-heading font-bold text-primary mb-3">La taille de votre copropriété</h3>
+        <p class="text-sm text-text/70 leading-relaxed mb-3">
+          Le syndic bénévole est particulièrement adapté aux petites copropriétés de moins de 10 lots. La gestion reste simple, les décisions se prennent rapidement et la charge de travail demeure raisonnable. Au-delà de 15 à 20 lots, la complexité augmente significativement : plus de prestataires à gérer, des budgets plus conséquents, des assemblées générales plus longues et des situations juridiques plus délicates.
+        </p>
+        <p class="text-sm text-text/70 leading-relaxed">
+          À Rennes, on estime que la majorité des copropriétés gérées en bénévolat comptent entre 3 et 12 lots, principalement dans les petits immeubles des quartiers centre et péricentre.
+        </p>
+      </div>
+
+      <!-- Critère 2 : Complexité -->
+      <div class="bg-white rounded-2xl shadow-lg p-6">
+        <h3 class="font-heading font-bold text-primary mb-3">La complexité technique de l'immeuble</h3>
+        <p class="text-sm text-text/70 leading-relaxed mb-3">
+          Un immeuble avec ascenseur, chauffage collectif, parking souterrain, local commercial ou des parties communes étendues nécessite une expertise technique que peu de copropriétaires possèdent. La gestion des contrats de maintenance, le suivi des diagnostics obligatoires et la planification des gros travaux demandent des compétences spécifiques.
+        </p>
+        <p class="text-sm text-text/70 leading-relaxed">
+          Si votre immeuble rennais dispose d'équipements complexes ou si des travaux importants sont prévus (ravalement, rénovation énergétique, mise aux normes), un syndic professionnel sera probablement plus adapté pour piloter ces projets dans le respect de la réglementation.
+        </p>
+      </div>
+
+      <!-- Critère 3 : Disponibilité -->
+      <div class="bg-white rounded-2xl shadow-lg p-6">
+        <h3 class="font-heading font-bold text-primary mb-3">Votre disponibilité personnelle</h3>
+        <p class="text-sm text-text/70 leading-relaxed mb-3">
+          Être syndic bénévole, c'est un engagement sur la durée. Il faut pouvoir consacrer plusieurs heures par mois à la gestion de la copropriété, être disponible pour les urgences (fuites, pannes, sinistres) et assurer le suivi administratif tout au long de l'année. Cet engagement est difficilement compatible avec un emploi du temps très chargé ou des absences prolongées.
+        </p>
+        <p class="text-sm text-text/70 leading-relaxed">
+          Posez-vous honnêtement la question : êtes-vous prêt à consacrer 5 à 15 heures par mois à cette mission pendant plusieurs années ? Avez-vous quelqu'un pour vous relayer en cas d'absence ? Si la réponse est non, il est préférable de faire appel à un professionnel.
+        </p>
+      </div>
+
+      <!-- Critère 4 : Compétences -->
+      <div class="bg-white rounded-2xl shadow-lg p-6">
+        <h3 class="font-heading font-bold text-primary mb-3">Vos compétences en gestion et en droit</h3>
+        <p class="text-sm text-text/70 leading-relaxed mb-3">
+          La gestion de copropriété implique des connaissances en comptabilité, en droit immobilier et en gestion de travaux. Le syndic bénévole doit maîtriser les règles de convocation d'AG, les majorités de vote, la tenue des procès-verbaux, les obligations déclaratives et la comptabilité spécifique aux copropriétés.
+        </p>
+        <p class="text-sm text-text/70 leading-relaxed">
+          Des formations existent pour accompagner les syndics bénévoles, et des outils en ligne facilitent la gestion quotidienne. Cependant, face à un contentieux juridique, un impayé important ou un sinistre complexe, l'expertise d'un professionnel fait souvent la différence.
+        </p>
+      </div>
+    </div>
+
+    <!-- Tableau récapitulatif -->
+    <div class="mt-10 bg-white rounded-2xl shadow-lg overflow-hidden">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-primary text-white">
+            <th class="px-6 py-4 text-left font-heading font-semibold">Critère</th>
+            <th class="px-6 py-4 text-center font-heading font-semibold">Syndic bénévole</th>
+            <th class="px-6 py-4 text-center font-heading font-semibold">Syndic professionnel</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100">
+          <tr>
+            <td class="px-6 py-3 font-medium text-text">Coût annuel</td>
+            <td class="px-6 py-3 text-center text-green-700 font-semibold">Faible (assurance uniquement)</td>
+            <td class="px-6 py-3 text-center text-text/70">80 à 420 &euro; / lot / an</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="px-6 py-3 font-medium text-text">Expertise juridique</td>
+            <td class="px-6 py-3 text-center text-red-600">Limitée</td>
+            <td class="px-6 py-3 text-center text-green-700 font-semibold">Complète</td>
+          </tr>
+          <tr>
+            <td class="px-6 py-3 font-medium text-text">Réactivité</td>
+            <td class="px-6 py-3 text-center text-green-700 font-semibold">Très rapide</td>
+            <td class="px-6 py-3 text-center text-text/70">Variable selon le cabinet</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="px-6 py-3 font-medium text-text">Taille idéale</td>
+            <td class="px-6 py-3 text-center text-text/70">Moins de 10-15 lots</td>
+            <td class="px-6 py-3 text-center text-text/70">Toutes tailles</td>
+          </tr>
+          <tr>
+            <td class="px-6 py-3 font-medium text-text">Gestion des gros travaux</td>
+            <td class="px-6 py-3 text-center text-red-600">Difficile</td>
+            <td class="px-6 py-3 text-center text-green-700 font-semibold">Maîtrisée</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="px-6 py-3 font-medium text-text">Transparence</td>
+            <td class="px-6 py-3 text-center text-green-700 font-semibold">Maximale</td>
+            <td class="px-6 py-3 text-center text-text/70">Selon le cabinet</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <div class="max-w-4xl mx-auto px-4">
+    <FAQ items={faqItems} />
+  </div>
+
+  <!-- Formulaire -->
+  <div class="max-w-4xl mx-auto px-4 py-12">
+    <LeadForm />
+  </div>
+</BaseLayout>

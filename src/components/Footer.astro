@@ -1,0 +1,49 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-primary text-white mt-16">
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Marque -->
+      <div>
+        <p class="font-heading text-lg font-bold mb-2">SyndicRennes.fr</p>
+        <p class="text-sm text-white/70">
+          Service gratuit de mise en relation avec des syndics de copropriété à Rennes.
+          Les syndics adaptés à votre copropriété vous contactent.
+        </p>
+      </div>
+
+      <!-- Liens rapides -->
+      <div>
+        <p class="font-heading font-semibold mb-2">Navigation</p>
+        <ul class="space-y-1 text-sm text-white/70">
+          <li><a href="/syndic-rennes" class="hover:text-accent transition-colors">Syndic Rennes</a></li>
+          <li><a href="/syndics-rennes" class="hover:text-accent transition-colors">Les syndics</a></li>
+          <li><a href="/comparatif-syndic-rennes" class="hover:text-accent transition-colors">Comparatif</a></li>
+          <li><a href="/prix-syndic-rennes" class="hover:text-accent transition-colors">Prix</a></li>
+          <li><a href="/changer-syndic-rennes" class="hover:text-accent transition-colors">Changer de syndic</a></li>
+          <li><a href="/syndic-benevole-rennes" class="hover:text-accent transition-colors">Syndic bénévole</a></li>
+        </ul>
+      </div>
+
+      <!-- Légal -->
+      <div>
+        <p class="font-heading font-semibold mb-2">Informations légales</p>
+        <ul class="space-y-1 text-sm text-white/70">
+          <li><a href="/mentions-legales" class="hover:text-accent transition-colors">Mentions légales</a></li>
+          <li><a href="/mentions-legales#rgpd" class="hover:text-accent transition-colors">Politique RGPD</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 mt-8 pt-6">
+      <p class="text-xs text-white/50 text-center">
+        En soumettant vos coordonnées, vous acceptez d'être recontacté par des syndics partenaires sélectionnés selon votre profil. Vos données ne sont pas vendues à des tiers.
+      </p>
+      <p class="text-xs text-white/40 text-center mt-2">
+        &copy; {currentYear} SyndicRennes.fr — Tous droits réservés
+      </p>
+    </div>
+  </div>
+</footer>

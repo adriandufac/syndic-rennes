@@ -1,0 +1,232 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeadForm from '../components/LeadForm.astro';
+import CTABanner from '../components/CTABanner.astro';
+import FAQ from '../components/FAQ.astro';
+
+const faqItems = [
+  {
+    question: "Quelle est la différence entre un syndic indépendant et un réseau national ?",
+    answer: "Un syndic indépendant est un cabinet local, souvent dirigé par un ou deux gérants, qui gère un portefeuille limité de copropriétés dans un périmètre géographique restreint. Un réseau national (Nexity, Foncia, Citya, etc.) est une enseigne présente dans toute la France, avec des agences locales rattachées à un groupe. Les indépendants offrent généralement plus de proximité et de réactivité, tandis que les réseaux nationaux disposent de moyens techniques et juridiques plus importants.",
+  },
+  {
+    question: "Un syndic indépendant est-il moins cher qu'un réseau national à Rennes ?",
+    answer: "En règle générale, oui. Les syndics indépendants à Rennes affichent des tarifs inférieurs de 10 à 25 % par rapport aux grandes enseignes, car ils ont des charges de structure plus faibles. Cependant, le prix ne doit pas être le seul critère : un syndic moins cher mais peu réactif vous coûtera plus cher à long terme en mauvaise gestion. C'est pourquoi nous vous recommandons de comparer les devis de plusieurs types de syndics avant de vous décider.",
+  },
+  {
+    question: "Qu'est-ce qu'un cabinet régional en syndic de copropriété ?",
+    answer: "Un cabinet régional est un syndic qui dispose de plusieurs agences dans une même région, comme la Bretagne. Il combine certains avantages du syndic indépendant (connaissance du marché local, interlocuteur identifié) avec ceux du réseau national (outils numériques mutualisés, capacité à gérer des copropriétés de grande taille). C'est souvent une solution intermédiaire pertinente pour les copropriétés moyennes.",
+  },
+  {
+    question: "Comment savoir quel type de syndic convient à ma copropriété à Rennes ?",
+    answer: "Cela dépend principalement de la taille de votre copropriété, de vos attentes en termes de réactivité et de votre budget. Les petites copropriétés (moins de 20 lots) s'orientent souvent vers un indépendant pour la proximité. Les grandes copropriétés (plus de 80 lots) préfèrent parfois un réseau national pour ses ressources. Entre les deux, un cabinet régional peut offrir le meilleur compromis. Notre service de mise en relation vous aide à identifier le profil le plus adapté.",
+  },
+  {
+    question: "Votre service de mise en relation est-il vraiment gratuit ?",
+    answer: "Oui, notre service est 100 % gratuit et sans engagement pour les copropriétaires et les membres du conseil syndical. Vous décrivez votre copropriété, et nous vous orientons vers des syndics professionnels adaptés à votre profil. Ce sont les syndics partenaires qui financent le service, pas vous. Vous n'avez aucune obligation de donner suite aux propositions reçues.",
+  },
+  {
+    question: "Puis-je recevoir des devis de syndics indépendants ET de réseaux nationaux ?",
+    answer: "Tout à fait. Lorsque vous remplissez notre formulaire, nous analysons votre profil pour vous proposer les syndics les plus pertinents, quel que soit leur type. Vous pouvez ainsi comparer sereinement une offre de syndic indépendant avec celle d'un réseau national ou d'un cabinet régional, et choisir en toute connaissance de cause.",
+  },
+];
+---
+
+<BaseLayout
+  title="Comparatif Syndics Rennes : Indépendants vs Réseaux Nationaux"
+  description="Quelles différences entre un syndic indépendant et un réseau national à Rennes ? Tableau comparatif objectif pour choisir selon votre copropriété."
+  canonical="https://syndic-rennes.fr/comparatif-syndic-rennes"
+  faqSchema={faqItems}
+>
+  <!-- Hero -->
+  <section class="bg-primary text-white py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="font-heading text-3xl md:text-5xl font-extrabold mb-4 leading-tight">
+        Syndic indépendant ou réseau national à <span class="text-accent">Rennes</span> ?
+      </h1>
+      <p class="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+        Tableau comparatif objectif des différents types de syndics pour vous aider à choisir celui qui correspond vraiment à votre copropriété.
+      </p>
+      <a
+        href="#formulaire"
+        data-source="hero-comparatif"
+        class="inline-block bg-accent hover:bg-orange-500 text-white font-heading font-bold px-8 py-4 rounded-xl text-lg transition-colors shadow-lg hover:shadow-xl"
+      >
+        Être mis en relation avec le bon syndic &rarr;
+      </a>
+      <p class="text-white/50 text-sm mt-3">Gratuit &middot; Sans engagement &middot; Réponse sous 48h</p>
+    </div>
+  </section>
+
+  <!-- Intro : pourquoi comprendre les types de syndics -->
+  <section class="max-w-4xl mx-auto px-4 py-16">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+      Pourquoi est-il important de distinguer les types de syndics ?
+    </h2>
+    <div class="prose prose-lg text-text/80 space-y-4">
+      <p>
+        Lorsqu'on cherche un syndic de copropriété à Rennes, la première question n'est pas "<em>quel cabinet choisir ?</em>" mais plutôt "<em>quel type de syndic correspond à ma copropriété ?</em>". Un petit immeuble de 8 lots dans le centre historique de Rennes n'a pas les mêmes besoins qu'une résidence de 120 logements à Villejean.
+      </p>
+      <p>
+        Sur le marché rennais, on distingue principalement trois profils : les <strong>syndics indépendants</strong>, implantés localement et souvent spécialisés ; les <strong>réseaux nationaux</strong>, présents dans toute la France avec des moyens importants ; et les <strong>cabinets régionaux</strong>, qui combinent ancrage local et structure intermédiaire.
+      </p>
+      <p>
+        Chaque profil a ses forces et ses limites. Comprendre ces différences vous permettra de poser les bonnes questions lors de vos échanges avec les syndics et de faire un choix éclairé lors de la prochaine assemblée générale.
+      </p>
+    </div>
+  </section>
+
+  <!-- Tableau comparatif -->
+  <section class="max-w-5xl mx-auto px-4 pb-16">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary text-center mb-10">
+      Tableau comparatif : syndic indépendant vs réseau national
+    </h2>
+    <div class="overflow-x-auto rounded-2xl shadow-lg">
+      <table class="w-full border-collapse text-left">
+        <thead>
+          <tr class="bg-primary text-white">
+            <th class="px-6 py-4 font-heading font-bold text-sm uppercase tracking-wider rounded-tl-2xl">Critère</th>
+            <th class="px-6 py-4 font-heading font-bold text-sm uppercase tracking-wider">Syndic indépendant</th>
+            <th class="px-6 py-4 font-heading font-bold text-sm uppercase tracking-wider rounded-tr-2xl">Réseau national</th>
+          </tr>
+        </thead>
+        <tbody class="text-text/80 text-sm md:text-base">
+          <tr class="bg-white">
+            <td class="px-6 py-4 font-heading font-semibold text-primary">Réactivité</td>
+            <td class="px-6 py-4">Souvent meilleure grâce à une taille humaine et un interlocuteur unique</td>
+            <td class="px-6 py-4">Variable selon l'agence locale et la charge du gestionnaire</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="px-6 py-4 font-heading font-semibold text-primary">Prix</td>
+            <td class="px-6 py-4">Généralement plus compétitif (charges de structure réduites)</td>
+            <td class="px-6 py-4">Tarifs standardisés, souvent plus élevés mais prévisibles</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="px-6 py-4 font-heading font-semibold text-primary">Outils digitaux</td>
+            <td class="px-6 py-4">Variable d'un cabinet à l'autre, parfois limités</td>
+            <td class="px-6 py-4">Plateforme propriétaire, extranet et application mobile souvent inclus</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="px-6 py-4 font-heading font-semibold text-primary">Spécialisation</td>
+            <td class="px-6 py-4">Souvent spécialisé sur une niche locale (petits immeubles, patrimoine ancien)</td>
+            <td class="px-6 py-4">Approche généraliste, large gamme de services complémentaires</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="px-6 py-4 font-heading font-semibold text-primary rounded-bl-2xl">Le plus adapté pour</td>
+            <td class="px-6 py-4">Petites et moyennes copropriétés (moins de 50 lots)</td>
+            <td class="px-6 py-4 rounded-br-2xl">Grandes copropriétés (plus de 80 lots) ou résidences récentes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-center text-sm text-text/50 mt-4">
+      Ce tableau présente des tendances générales observées sur le marché rennais. Chaque cabinet a ses propres spécificités.
+    </p>
+  </section>
+
+  <!-- Cabinet régional : la troisième voie -->
+  <section class="max-w-4xl mx-auto px-4 py-16">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+      Le cabinet régional : une troisième option à considérer
+    </h2>
+    <div class="prose prose-lg text-text/80 space-y-4">
+      <p>
+        Entre le syndic indépendant de quartier et le grand réseau national, il existe une catégorie intermédiaire souvent méconnue : le <strong>cabinet régional</strong>. Ces structures disposent de plusieurs agences en Bretagne (Rennes, Saint-Malo, Vannes, Brest) tout en conservant une gouvernance locale et un ancrage territorial fort.
+      </p>
+      <p>
+        Leur principal avantage ? Ils combinent la <strong>proximité et la réactivité</strong> d'un indépendant avec des <strong>outils et des moyens mutualisés</strong> qui rivalisent avec ceux des grandes enseignes. Leur extranet est souvent performant, leurs équipes juridiques sont étoffées, et leur connaissance du marché breton est un atout indéniable.
+      </p>
+      <p>
+        Pour une copropriété de taille moyenne (20 à 80 lots) à Rennes, le cabinet régional constitue fréquemment le meilleur compromis entre qualité de service, prix et fiabilité. C'est un profil que nous recommandons régulièrement dans nos mises en relation.
+      </p>
+    </div>
+    <div class="mt-8 bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+      <h3 class="font-heading font-bold text-primary mb-3">En résumé : les 3 profils</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+        <div class="bg-gray-50 rounded-xl p-4">
+          <p class="font-heading font-bold text-primary mb-2">Indépendant</p>
+          <p class="text-text/70">Proximité maximale, tarifs attractifs, idéal pour les petites copropriétés qui veulent un interlocuteur unique et réactif.</p>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-4">
+          <p class="font-heading font-bold text-primary mb-2">Régional</p>
+          <p class="text-text/70">Compromis équilibré entre proximité et moyens techniques. Pertinent pour les copropriétés de taille intermédiaire.</p>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-4">
+          <p class="font-heading font-bold text-primary mb-2">Réseau national</p>
+          <p class="text-text/70">Moyens importants, outils digitaux avancés, adapté aux grandes résidences avec des besoins complexes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA intermédiaire -->
+  <div class="max-w-4xl mx-auto px-4">
+    <CTABanner source="comparatif-mid" />
+  </div>
+
+  <!-- Comment savoir quel type vous convient -->
+  <section class="max-w-4xl mx-auto px-4 py-16">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+      Comment savoir quel type de syndic vous convient ?
+    </h2>
+    <div class="prose prose-lg text-text/80 space-y-4">
+      <p>
+        Le choix du type de syndic dépend avant tout de la <strong>taille de votre copropriété</strong>, de vos <strong>attentes en matière de suivi</strong> et de votre <strong>budget</strong>. Voici quelques repères pratiques pour vous orienter :
+      </p>
+    </div>
+    <div class="mt-8 space-y-6">
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+        <h3 class="font-heading font-bold text-primary mb-2">Moins de 20 lots</h3>
+        <p class="text-text/70">
+          Privilégiez un <strong>syndic indépendant</strong>. Votre copropriété représente un client important pour un petit cabinet, ce qui garantit de l'attention et de la réactivité. Les tarifs seront aussi plus compétitifs, car les indépendants adaptent facilement leur offre aux petites structures. A Rennes, plusieurs cabinets sont spécialisés dans la gestion de petits immeubles du centre-ville et des quartiers historiques.
+        </p>
+      </div>
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+        <h3 class="font-heading font-bold text-primary mb-2">20 à 80 lots</h3>
+        <p class="text-text/70">
+          C'est la tranche la plus ouverte. Un <strong>cabinet régional</strong> offre souvent le meilleur équilibre : il dispose d'outils numériques performants, d'une équipe suffisamment étoffée pour ne pas dépendre d'un seul gestionnaire, et sa connaissance du marché rennais est un vrai atout. Un syndic indépendant expérimenté peut aussi convenir si vous souhaitez un interlocuteur unique et très disponible.
+        </p>
+      </div>
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+        <h3 class="font-heading font-bold text-primary mb-2">Plus de 80 lots</h3>
+        <p class="text-text/70">
+          Les grandes copropriétés ont besoin de moyens techniques et juridiques importants : gestion de travaux lourds, montage de dossiers MaPrimeRénov' collectifs, organisation d'assemblées générales complexes. Un <strong>réseau national</strong> ou un <strong>gros cabinet régional</strong> sera mieux armé pour faire face à ces enjeux. Assurez-vous toutefois que le gestionnaire dédié à votre résidence ne gère pas plus de 30 à 40 copropriétés.
+        </p>
+      </div>
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+        <h3 class="font-heading font-bold text-primary mb-2">Copropriété en difficulté</h3>
+        <p class="text-text/70">
+          Si votre copropriété rencontre des impayés importants, des travaux urgents non réalisés ou des conflits entre copropriétaires, le type de syndic compte moins que <strong>l'expérience du gestionnaire</strong>. Cherchez un professionnel qui a déjà accompagné des copropriétés en redressement, quel que soit son profil. Notre service de mise en relation peut vous orienter vers des syndics ayant cette expertise à Rennes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <div class="max-w-4xl mx-auto px-4">
+    <FAQ items={faqItems} />
+  </div>
+
+  <!-- CTA fort avant formulaire -->
+  <section class="max-w-4xl mx-auto px-4 py-12 text-center">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-4">
+      Vous ne savez toujours pas quel type de syndic choisir ?
+    </h2>
+    <p class="text-text/70 text-lg max-w-2xl mx-auto mb-6">
+      Décrivez votre copropriété en quelques clics. Notre service de mise en relation vous oriente vers le bon type de syndic et vous met en contact avec des professionnels qualifiés à Rennes.
+    </p>
+    <a
+      href="#formulaire"
+      data-source="comparatif-bottom"
+      class="inline-block bg-accent hover:bg-orange-500 text-white font-heading font-bold px-8 py-4 rounded-xl text-lg transition-colors shadow-lg hover:shadow-xl"
+    >
+      Recevoir mes devis gratuits &rarr;
+    </a>
+    <p class="text-text/40 text-sm mt-3">Gratuit &middot; Sans engagement &middot; Réponse sous 48h</p>
+  </section>
+
+  <!-- Formulaire -->
+  <div class="max-w-4xl mx-auto px-4 py-12">
+    <LeadForm />
+  </div>
+</BaseLayout>

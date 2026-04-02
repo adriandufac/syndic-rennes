@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeadForm from '../components/LeadForm.astro';
+import CTABanner from '../components/CTABanner.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import FAQ from '../components/FAQ.astro';
+
+const faqItems = [
+  { question: "Combien coûte un syndic à Rennes ?", answer: "Le coût moyen d'un syndic à Rennes varie de 80 € à 420 € par lot et par an, selon la taille de votre copropriété. Les petites copropriétés (moins de 10 lots) paient en moyenne 280 à 420 € par lot, tandis que les grandes copropriétés (plus de 100 lots) bénéficient de tarifs réduits, entre 80 et 150 € par lot." },
+  { question: "Comment changer de syndic à Rennes ?", answer: "Pour changer de syndic, il faut inscrire la question à l'ordre du jour de l'assemblée générale et obtenir un vote à la majorité absolue (article 25 de la loi du 10 juillet 1965). Le changement prend effet à la date fixée par l'AG." },
+  { question: "Le service est-il vraiment gratuit ?", answer: "Oui, notre service est 100% gratuit pour les copropriétaires. Nous nous rémunérons auprès des syndics partenaires lorsqu'une mise en relation aboutit. Vous n'avez rien à payer, ni maintenant ni plus tard." },
+  { question: "Comment sont sélectionnés les syndics qui me contactent ?", answer: "Nous analysons le profil de votre copropriété (taille, type d'immeuble, localisation) et nous vous mettons en relation uniquement avec les cabinets dont les compétences et la zone d'intervention correspondent à votre situation." },
+];
+---
+
+<BaseLayout
+  title="Syndic Rennes : Service Gratuit de Mise en Relation avec des Syndics"
+  description="Service gratuit de mise en relation avec des syndics qualifiés à Rennes. Décrivez votre copropriété, nous transmettons votre demande aux syndics partenaires adaptés."
+  canonical="https://syndic-rennes.fr"
+  faqSchema={faqItems}
+>
+  <!-- Hero -->
+  <section class="bg-primary text-white py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="font-heading text-3xl md:text-5xl font-extrabold mb-4 leading-tight">
+        Trouvez le syndic adapté à votre copropriété à <span class="text-accent">Rennes</span>
+      </h1>
+      <p class="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+        Décrivez votre copropriété, nous transmettons votre demande aux syndics partenaires susceptibles de correspondre à votre profil.
+      </p>
+      <a
+        href="#formulaire"
+        data-source="hero-home"
+        class="inline-block bg-accent hover:bg-orange-500 text-white font-heading font-bold px-8 py-4 rounded-xl text-lg transition-colors shadow-lg hover:shadow-xl"
+      >
+        Être mis en relation &rarr;
+      </a>
+      <p class="text-white/50 text-sm mt-3">Gratuit &middot; Sans engagement</p>
+    </div>
+  </section>
+
+  <!-- Comment ça marche -->
+  <HowItWorks />
+
+  <!-- Avantages -->
+  <section class="max-w-5xl mx-auto px-4 py-16">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary text-center mb-10">
+      Pourquoi passer par notre service ?
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white rounded-2xl shadow-md p-6 text-center">
+        <div class="text-4xl mb-3">&#127919;</div>
+        <h3 class="font-heading font-bold text-primary mb-2">Syndics ciblés, pas en masse</h3>
+        <p class="text-sm text-text/70">On ne vous envoie pas une liste générique. On sélectionne les cabinets qui correspondent vraiment à la taille et au profil de votre copropriété.</p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-md p-6 text-center">
+        <div class="text-4xl mb-3">&#9989;</div>
+        <h3 class="font-heading font-bold text-primary mb-2">Syndics qualifiés à Rennes</h3>
+        <p class="text-sm text-text/70">Uniquement des professionnels titulaires de la carte professionnelle, implantés à Rennes et en Ille-et-Vilaine.</p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-md p-6 text-center">
+        <div class="text-4xl mb-3">&#128337;</div>
+        <h3 class="font-heading font-bold text-primary mb-2">Rapide et simple</h3>
+        <p class="text-sm text-text/70">Remplissez le formulaire en 2 minutes. Nous faisons notre possible pour vous orienter vers des syndics adaptés dans les meilleurs délais.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4">
+    <CTABanner source="home-mid" />
+  </div>
+
+  <!-- FAQ -->
+  <FAQ items={faqItems} />
+
+  <!-- Formulaire -->
+  <div class="max-w-4xl mx-auto px-4 py-12">
+    <LeadForm />
+  </div>
+</BaseLayout>

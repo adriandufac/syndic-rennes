@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://syndic-rennes.fr/sitemap-index.xml

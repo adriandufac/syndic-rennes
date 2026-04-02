@@ -1,0 +1,91 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  schemaType?: string;
+  faqSchema?: { question: string; answer: string }[];
+}
+
+const { title, description, canonical, faqSchema } = Astro.props;
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "SyndicRennes.fr",
+  "description": "Service de mise en relation avec des syndics de copropriété à Rennes",
+  "url": "https://syndic-rennes.fr",
+  "areaServed": {
+    "@type": "City",
+    "name": "Rennes",
+    "sameAs": "https://www.wikidata.org/wiki/Q647"
+  },
+  "serviceType": "Mise en relation syndic copropriété"
+};
+
+const faqPageSchema = faqSchema ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqSchema.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+} : null;
+---
+
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <title>{title}</title>
+  <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+  {faqPageSchema && <script type="application/ld+json" set:html={JSON.stringify(faqPageSchema)} />}
+  <script defer data-domain="syndic-rennes.fr" src="https://plausible.io/js/script.js"></script>
+</head>
+<body class="bg-bg text-text font-body antialiased">
+  <Header />
+  <main>
+    <slot />
+  </main>
+  <Footer />
+  <script>
+    document.querySelectorAll('a[href="#formulaire"], [data-cta]').forEach((el) => {
+      el.addEventListener('click', () => {
+        window.plausible?.('CTA Click', { props: { source: (el as HTMLElement).dataset.source || 'unknown' } });
+      });
+    });
+    document.querySelector('form[name="lead-syndic"]')?.addEventListener('submit', () => {
+      window.plausible?.('Lead Submitted');
+    });
+    const formSection = document.querySelector('#formulaire');
+    if (formSection) {
+      const observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          window.plausible?.('Form Viewed');
+          observer.disconnect();
+        }
+      });
+      observer.observe(formSection);
+    }
+  </script>
+</body>
+</html>

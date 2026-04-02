@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Merci ! Votre demande a bien été reçue | SyndicRennes.fr"
+  description="Votre demande de mise en relation avec des syndics à Rennes a bien été transmise."
+  canonical="https://syndic-rennes.fr/merci"
+>
+  <section class="min-h-[60vh] flex items-center justify-center px-4">
+    <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12 max-w-xl text-center">
+      <div class="text-5xl mb-4">&#10003;</div>
+      <h1 class="font-heading text-3xl md:text-4xl font-bold text-primary mb-4">
+        Votre demande a été transmise !
+      </h1>
+      <p class="text-lg text-text/80 mb-6">
+        Nous avons bien reçu votre demande. Elle a été transmise à notre réseau de syndics partenaires.
+        Un ou plusieurs syndics vous contacteront <strong>si votre profil correspond à leur zone et leur spécialité</strong>.
+      </p>
+      <div class="bg-bg rounded-xl p-6 mb-6 text-left">
+        <p class="font-heading font-semibold text-primary mb-2">Ce qui va se passer :</p>
+        <ul class="space-y-2 text-sm text-text/70">
+          <li>1. Nous analysons votre profil (taille, type, localisation)</li>
+          <li>2. Votre demande est transmise aux syndics partenaires correspondants</li>
+          <li>3. Les syndics intéressés et disponibles vous recontactent directement</li>
+        </ul>
+      </div>
+      <p class="text-sm text-text/60 mb-6">
+        Nous faisons notre possible pour vous orienter sous 48h ouvrées. Si aucun partenaire ne correspond à votre profil actuellement, nous conservons votre demande et vous recontacterons dès qu'un syndic adapté rejoint notre réseau.
+      </p>
+      <a
+        href="/"
+        class="inline-block bg-primary hover:bg-primary/90 text-white font-heading font-semibold px-6 py-3 rounded-xl transition-colors"
+      >
+        &larr; Retour à l'accueil
+      </a>
+    </div>
+  </section>
+</BaseLayout>

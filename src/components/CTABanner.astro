@@ -1,0 +1,23 @@
+---
+interface Props {
+  source?: string;
+}
+const { source = 'cta-banner' } = Astro.props;
+---
+
+<section class="bg-primary text-white py-10 my-12 rounded-2xl text-center px-6">
+  <h2 class="font-heading text-2xl md:text-3xl font-bold mb-3">
+    Vous ne savez pas quel syndic correspond à votre copropriété ?
+  </h2>
+  <p class="text-white/80 mb-6 max-w-xl mx-auto">
+    Décrivez votre situation, nous transmettons votre demande aux syndics partenaires adaptés à Rennes.
+  </p>
+  <a
+    href="#formulaire"
+    data-source={source}
+    class="inline-block bg-accent hover:bg-orange-500 text-white font-heading font-bold px-8 py-3 rounded-xl transition-colors shadow-md hover:shadow-lg text-lg"
+  >
+    Être mis en relation &rarr;
+  </a>
+  <p class="text-white/50 text-xs mt-3">Gratuit &middot; Sans engagement</p>
+</section>

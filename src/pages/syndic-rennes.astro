@@ -1,0 +1,198 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeadForm from '../components/LeadForm.astro';
+import CTABanner from '../components/CTABanner.astro';
+import FAQ from '../components/FAQ.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+
+const faqItems = [
+  {
+    question: "Comment fonctionne votre service de mise en relation avec un syndic a Rennes ?",
+    answer: "Notre service est simple : vous remplissez un formulaire decrivant votre copropriete (nombre de lots, type d'immeuble, situation actuelle). Nous analysons votre profil et selectionnons les cabinets de syndics a Rennes les plus adaptes a votre situation. Ces syndics vous contactent ensuite directement avec des propositions ciblees. Le service est entierement gratuit et sans engagement pour les coproprietaires."
+  },
+  {
+    question: "Le service est-il vraiment gratuit ?",
+    answer: "Oui, notre service de mise en relation est 100% gratuit et sans engagement pour les coproprietaires et membres du conseil syndical. Nous nous remunerons aupres des syndics partenaires qui souhaitent etre mis en relation avec des coproprietes a Rennes. Vous ne payez rien, ni avant, ni apres la mise en relation."
+  },
+  {
+    question: "Combien de temps faut-il pour etre contacte par un syndic ?",
+    answer: "Apres avoir rempli le formulaire, vous recevez generalement un premier contact de syndics adaptes sous 24 a 48 heures ouvrees. Les cabinets selectionnes pour votre copropriete vous joignent par telephone ou par email selon vos preferences pour discuter de vos besoins et vous proposer un accompagnement personnalise."
+  },
+  {
+    question: "Comment selectionnez-vous les syndics que vous recommandez ?",
+    answer: "Chaque syndic partenaire fait l'objet d'une verification rigoureuse. Nous controlons la carte professionnelle G delivree par la CCI, la garantie financiere, l'assurance responsabilite civile professionnelle, ainsi que l'implantation locale a Rennes ou dans l'agglomeration. Nous evaluons egalement la reactivite, la transparence tarifaire et les retours de coproprietaires. Un syndic qui ne repond pas a nos exigences est retire du reseau."
+  },
+  {
+    question: "Peut-on changer de syndic en cours de mandat ?",
+    answer: "Oui, il est possible de revoquer un syndic en cours de mandat pour motif legitime (faute de gestion, non-respect du contrat). La revocation doit etre votee en assemblee generale a la majorite absolue (article 25 de la loi du 10 juillet 1965). En pratique, il est souvent plus simple d'attendre l'echeance du contrat. Notre service peut vous accompagner dans les deux cas en vous orientant vers des syndics adaptes a votre situation."
+  },
+  {
+    question: "Combien coute un syndic de copropriete a Rennes ?",
+    answer: "Les honoraires varient selon la taille de la copropriete. A Rennes, comptez en moyenne 280 a 420 euros par lot et par an pour une petite copropriete de moins de 10 lots, 180 a 280 euros pour 10 a 30 lots, 120 a 200 euros pour 30 a 100 lots, et 80 a 150 euros au-dela de 100 lots. Ces tarifs incluent la gestion courante mais pas les prestations exceptionnelles. Notre service vous permet d'etre oriente vers des syndics au tarif adapte a votre copropriete."
+  },
+  {
+    question: "Quels types de coproprietes pouvez-vous accompagner ?",
+    answer: "Nous accompagnons tous les types de coproprietes a Rennes : petites residences de moins de 10 lots, coproprietes moyennes de 10 a 100 lots, et grandes residences de plus de 100 lots. Que votre immeuble soit residentiel, mixte (habitation et commerce) ou neuf, nous selectionnons des syndics ayant l'experience et les competences adaptees a votre configuration."
+  },
+  {
+    question: "Quelle est la difference entre votre service et un annuaire de syndics ?",
+    answer: "Contrairement a un annuaire qui liste tous les syndics sans distinction, notre service analyse votre besoin specifique (taille, type d'immeuble, quartier, situation contractuelle) pour vous orienter uniquement vers les cabinets pertinents. Vous ne recevez pas une liste generique : ce sont des syndics selectionnes pour votre copropriete qui vous contactent avec une proposition adaptee."
+  }
+];
+---
+
+<BaseLayout
+  title="Syndic Rennes : Trouvez le Syndic Adapte a Votre Copropriete"
+  description="Service gratuit de mise en relation avec des syndics qualifies a Rennes. On selectionne les cabinets adaptes a votre copropriete. Reponse sous 48h."
+  canonical="https://syndic-rennes.fr/syndic-rennes"
+  faqSchema={faqItems}
+>
+
+  <!-- Hero -->
+  <section class="bg-primary text-white py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="font-heading text-3xl md:text-5xl font-extrabold mb-4 leading-tight">
+        Syndic <span class="text-accent">Rennes</span> : Trouvez le Syndic Adapte a Votre Copropriete
+      </h1>
+      <p class="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+        Plus de 50 cabinets exercent a Rennes. Nous analysons votre copropriete et vous orientons vers les syndics les mieux adaptes a votre situation. Des professionnels selectionnes vous contactent sous 48h.
+      </p>
+      <a
+        href="#formulaire"
+        data-source="hero-syndic-rennes"
+        class="inline-block bg-accent hover:bg-orange-500 text-white font-heading font-bold px-8 py-4 rounded-xl text-lg transition-colors shadow-lg hover:shadow-xl"
+      >
+        Etre mis en relation &rarr;
+      </a>
+      <p class="mt-4 text-sm text-white/60">Gratuit &middot; Sans engagement &middot; Reponse sous 48h</p>
+    </div>
+  </section>
+
+  <!-- Comment ca marche -->
+  <HowItWorks />
+
+  <!-- Comment trouver le bon syndic a Rennes ? -->
+  <section class="py-12 md:py-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+        Comment trouver le bon syndic a Rennes ?
+      </h2>
+      <div class="space-y-4 text-text/80 leading-relaxed">
+        <p>
+          Trouver le syndic adapte a sa copropriete a Rennes n'est pas une demarche simple. La metropole rennaise compte plus de 50 cabinets de syndics professionnels, avec des profils tres differents : grands groupes nationaux, cabinets regionaux, structures independantes, syndics en ligne. Face a cette diversite, les membres du conseil syndical et les coproprietaires se retrouvent souvent demunis. Comment savoir quel cabinet possede l'experience adaptee a la taille de votre immeuble ? Lequel connait les specificites de votre quartier ? Lequel propose un niveau de service en adequation avec vos attentes ?
+        </p>
+        <p>
+          C'est precisement pour repondre a cette difficulte que nous avons cree notre service de mise en relation. Plutot que de vous laisser chercher a l'aveugle, nous analysons le profil de votre copropriete — nombre de lots, type d'immeuble, situation contractuelle, localisation — et nous selectionnons les cabinets dont l'expertise correspond a vos besoins reels. Vous n'etes pas noye sous des dizaines de contacts generiques : vous etes oriente vers des professionnels pertinents qui comprennent votre situation.
+        </p>
+        <p>
+          Cette approche ciblee fait toute la difference. Un syndic habitue a gerer des residences de 200 lots n'aura pas la meme approche qu'un cabinet specialise dans les petites coproprietes de centre-ville. En vous orientant vers les bons interlocuteurs des le depart, nous vous faisons gagner un temps precieux et vous aidons a engager un dialogue constructif avec des syndics reellement adaptes a votre copropriete rennaise.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pourquoi le choix du syndic est crucial -->
+  <section class="py-12 md:py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+        Pourquoi le choix du syndic est crucial pour votre copropriete
+      </h2>
+      <div class="space-y-4 text-text/80 leading-relaxed">
+        <p>
+          Le syndic de copropriete n'est pas un simple prestataire administratif : c'est le gestionnaire quotidien de votre patrimoine immobilier. A Rennes, ou le prix au metre carre depasse regulierement 3 500 euros dans les quartiers recherches, un syndic competent peut faire la difference entre un immeuble bien entretenu qui prend de la valeur et un bien qui se degrade faute de gestion rigoureuse. Chaque decision du syndic — choix des prestataires, planification des travaux, suivi des impays — a un impact direct sur vos charges et sur la valorisation de votre logement.
+        </p>
+        <p>
+          La maitrise des charges est souvent le premier sujet de preoccupation des coproprietaires. Un syndic rigoureux negocie les contrats d'entretien, met en concurrence les fournisseurs, anticipe les travaux pour eviter les reparations d'urgence toujours plus couteuses. A l'inverse, un syndic peu implique laisse les depenses deriver, ne rengocie pas les contrats a echeance et reagit au lieu d'anticiper. Sur une copropriete de 30 lots a Rennes, la difference entre un bon et un mauvais syndic peut representer plusieurs milliers d'euros par an sur le budget global.
+        </p>
+        <p>
+          Au-dela des charges, le syndic joue un role cle dans la valorisation de votre patrimoine. C'est lui qui pilote les travaux de renovation energetique, qui veille au respect du reglement de copropriete, qui gere les relations avec les locataires et les prestataires. Un immeuble bien gere, avec un carnet d'entretien a jour et des travaux planifies, se vend mieux et plus cher. A Rennes, ou le marche immobilier reste dynamique, choisir le bon syndic est un veritable investissement pour l'avenir de votre copropriete.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comment fonctionne notre service de mise en relation -->
+  <section class="py-12 md:py-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+        Comment fonctionne notre service de mise en relation
+      </h2>
+      <div class="space-y-4 text-text/80 leading-relaxed">
+        <p>
+          Notre demarche repose sur un principe simple : la selection plutot que le volume. Lorsque vous remplissez notre formulaire, nous recueillons des informations precises sur votre copropriete — nombre de lots, type d'immeuble (residentiel, mixte, neuf), echeance du contrat actuel et votre role dans la copropriete. Ces donnees nous permettent de dresser un profil detaille de vos besoins et d'identifier les syndics de notre reseau rennais les plus pertinents pour y repondre.
+        </p>
+        <p>
+          Contrairement a un annuaire ou a une plateforme generique qui transmet votre demande a tous les syndics inscrits, nous effectuons une selection ciblee. Nous ne transmettons votre dossier qu'aux cabinets dont le profil correspond reellement a votre copropriete : un syndic specialise dans les grandes residences ne sera pas sollicite pour une copropriete de 8 lots, et inversement. Cette approche garantit que les syndics qui vous contactent comprennent votre situation et sont en mesure de vous proposer un accompagnement adapte.
+        </p>
+        <p>
+          Une fois la mise en relation effectuee, les syndics selectionnes vous contactent directement sous 48 heures pour echanger sur vos besoins et vous presenter leur offre. Vous restez totalement libre de donner suite ou non, sans aucun engagement. Notre role s'arrete a la mise en relation : nous ne prenons pas de commission sur les contrats signes et nous ne partageons pas vos donnees au-dela des syndics selectionnes. C'est un service transparent, concu pour servir l'interet des coproprietaires rennais.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <div class="max-w-4xl mx-auto px-4">
+    <CTABanner source="syndic-rennes-mid" />
+  </div>
+
+  <!-- Les criteres pour bien choisir son syndic -->
+  <section class="py-12 md:py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+        Les criteres pour bien choisir son syndic
+      </h2>
+      <div class="space-y-4 text-text/80 leading-relaxed">
+        <p>
+          Meme avec un service de mise en relation, il est important de savoir sur quels criteres evaluer les syndics qui vous contactent. Voici les cinq points essentiels a examiner pour faire le bon choix a Rennes.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+        <div class="bg-bg rounded-2xl p-6 shadow-sm">
+          <h3 class="font-heading font-bold text-primary mb-2">Proximite geographique</h3>
+          <p class="text-sm text-text/70 leading-relaxed">
+            Un syndic implante a Rennes peut intervenir rapidement en cas d'urgence (degat des eaux, panne de chauffage, probleme de securite). Il connait les artisans locaux, les specificites des quartiers et peut se rendre facilement sur place pour les reunions de conseil syndical ou les visites techniques. Privilegiez un cabinet disposant d'un bureau physique dans l'agglomeration rennaise.
+          </p>
+        </div>
+        <div class="bg-bg rounded-2xl p-6 shadow-sm">
+          <h3 class="font-heading font-bold text-primary mb-2">Experience et specialisation</h3>
+          <p class="text-sm text-text/70 leading-relaxed">
+            Tous les syndics ne gerent pas les memes types de coproprietes. Certains sont specialises dans les petites coproprietes, d'autres dans les grandes residences ou les immeubles neufs. Verifiez que le cabinet a l'habitude de gerer des coproprietes similaires a la votre en termes de taille, d'anciennete et de complexite technique.
+          </p>
+        </div>
+        <div class="bg-bg rounded-2xl p-6 shadow-sm">
+          <h3 class="font-heading font-bold text-primary mb-2">Outils numeriques et transparence</h3>
+          <p class="text-sm text-text/70 leading-relaxed">
+            Un bon syndic propose un extranet coproprietaire permettant de consulter les documents comptables, les PV d'assemblee generale et le carnet d'entretien. La dematerialisation des echanges (convocations, votes, signalements) simplifie la vie des coproprietaires et renforce la transparence de la gestion. Demandez une demonstration de la plateforme avant de vous engager.
+          </p>
+        </div>
+        <div class="bg-bg rounded-2xl p-6 shadow-sm">
+          <h3 class="font-heading font-bold text-primary mb-2">Transparence tarifaire</h3>
+          <p class="text-sm text-text/70 leading-relaxed">
+            Depuis la loi ALUR, les contrats de syndic sont encadres et doivent distinguer clairement les prestations incluses dans le forfait de base des prestations facturees en supplement. Examinez attentivement le contrat : certains syndics proposent un forfait attractif mais multiplient les frais annexes (frais de photocopie, de courrier, de mutation). Un syndic transparent n'a rien a cacher.
+          </p>
+        </div>
+        <div class="bg-bg rounded-2xl p-6 shadow-sm md:col-span-2">
+          <h3 class="font-heading font-bold text-primary mb-2">Reactivite et disponibilite</h3>
+          <p class="text-sm text-text/70 leading-relaxed">
+            La reactivite est peut-etre le critere le plus important au quotidien. Un syndic qui met trois semaines a repondre a un email ou qui est injoignable par telephone genere de la frustration et peut aggraver des problemes techniques. Renseignez-vous sur le nombre de coproprietes gerees par gestionnaire (au-dela de 40-50 immeubles, la qualite de service risque de se degrader) et sur les horaires de disponibilite. Certains cabinets a Rennes proposent desormais des permanences telephoniques etendues et un service d'urgence 24h/24.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <div class="px-4">
+    <FAQ items={faqItems} />
+  </div>
+
+  <!-- Formulaire -->
+  <section class="py-12 md:py-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <LeadForm />
+    </div>
+  </section>
+
+</BaseLayout>
