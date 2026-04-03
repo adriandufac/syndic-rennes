@@ -40,12 +40,15 @@ const faqPageSchema = faqSchema ? {
   }))
 } : null;
 
+const speakableCssSelectors = [".direct-answer", "h1 + p"];
+if (faqSchema) speakableCssSelectors.push(".faq-answer");
+
 const speakableSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   "speakable": {
     "@type": "SpeakableSpecification",
-    "cssSelector": [".direct-answer", ".faq-answer", "h1 + p"]
+    "cssSelector": speakableCssSelectors
   },
   "url": canonical
 };
