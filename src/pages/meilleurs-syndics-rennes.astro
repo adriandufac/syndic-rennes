@@ -1,0 +1,403 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeadForm from '../components/LeadForm.astro';
+import CTABanner from '../components/CTABanner.astro';
+import FAQ from '../components/FAQ.astro';
+import SyndicCard from '../components/SyndicCard.astro';
+import DirectAnswer from '../components/DirectAnswer.astro';
+import { syndics, typeLabels } from '../data/syndics';
+
+// Sélection éditoriale par profil (factuelle, basée sur les données de syndics.ts)
+const byIds = (ids: string[]) =>
+  ids.map(id => syndics.find(s => s.id === id)).filter((s): s is NonNullable<typeof s> => Boolean(s));
+
+const petitesSyndics = byIds(['cabinet-martin-rennes', 'armor-gestion', 'bretagne-syndic']);
+const moyennesSyndics = byIds(['armor-gestion', 'bretagne-syndic', 'foncia-rennes']);
+const grandesSyndics = byIds(['foncia-rennes', 'citya-rennes', 'nexity-rennes']);
+const neufsSyndics = byIds(['citya-rennes', 'nexity-rennes', 'bretagne-syndic']);
+
+// Schema ItemList pour la sélection globale (sans rating, uniquement les cabinets listés sur la page)
+const listedIds = Array.from(new Set([
+  ...petitesSyndics.map(s => s.id),
+  ...moyennesSyndics.map(s => s.id),
+  ...grandesSyndics.map(s => s.id),
+  ...neufsSyndics.map(s => s.id),
+]));
+
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Sélection des syndics de copropriété à Rennes par profil",
+  "description": "Sélection objective par profil de copropriété — pas de classement subjectif.",
+  "itemListOrder": "https://schema.org/ItemListUnordered",
+  "numberOfItems": listedIds.length,
+  "itemListElement": listedIds.map((id, index) => {
+    const s = syndics.find(x => x.id === id)!;
+    return {
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "LocalBusiness",
+        "name": s.nom,
+        "description": `${typeLabels[s.type]} — ${s.specialite.join(', ')}. Tarifs indicatifs : ${s.fourchettePrix.min}–${s.fourchettePrix.max} €/lot/an.`,
+        "areaServed": s.zoneIntervention.map(z => ({ "@type": "Place", "name": z })),
+        "address": { "@type": "PostalAddress", "addressLocality": "Rennes", "addressRegion": "Bretagne", "addressCountry": "FR" }
+      }
+    };
+  })
+};
+
+const faqItems = [
+  {
+    question: "Quels sont les meilleurs syndics de copropriété à Rennes ?",
+    answer: "Il n'existe pas de classement universel des meilleurs syndics à Rennes : le meilleur syndic dépend de votre profil de copropriété. Les cabinets indépendants comme Cabinet Martin Immobilier sont généralement bien adaptés aux petites copropriétés de moins de 30 lots, les cabinets régionaux comme Armor Gestion ou Bretagne Syndic conviennent aux copropriétés moyennes (20 à 80 lots), et les réseaux nationaux (Foncia, Citya, Nexity) disposent des moyens techniques adaptés aux grandes résidences de plus de 80 lots. Le choix dépend aussi de la nature de votre immeuble, de vos projets de travaux et de votre attente en matière de proximité."
+  },
+  {
+    question: "Existe-t-il un classement officiel des syndics à Rennes ?",
+    answer: "Non, aucun classement officiel des syndics n'existe en France, ni à Rennes. Les syndics professionnels sont simplement tenus de détenir une carte professionnelle délivrée par la Chambre de Commerce et d'Industrie, une garantie financière et une assurance responsabilité civile. Aucun organisme public n'établit de hiérarchie entre eux. Les classements que vous trouvez en ligne sont soit des avis de consommateurs (facilement biaisés), soit des sélections éditoriales comme celle-ci, basées sur des critères objectifs."
+  },
+  {
+    question: "Comment reconnaître un bon syndic à Rennes ?",
+    answer: "Un bon syndic se reconnaît à cinq critères objectifs et vérifiables : une carte professionnelle CCI en cours de validité, une garantie financière suffisante pour couvrir les fonds de la copropriété, un portefeuille de moins de 40 copropriétés par gestionnaire, une ancienneté locale d'au moins 5 ans, et une spécialisation cohérente avec la taille de votre copropriété. Au-delà de ces critères, la qualité relationnelle du gestionnaire dédié à votre immeuble est déterminante : demandez à le rencontrer avant de signer."
+  },
+  {
+    question: "Quel est le meilleur syndic pour une petite copropriété à Rennes ?",
+    answer: "Pour une copropriété de moins de 20 lots à Rennes, les cabinets indépendants locaux sont généralement les plus adaptés. Ils proposent un interlocuteur unique, une meilleure réactivité et des tarifs souvent plus compétitifs (de 180 à 300 €/lot/an). Cabinet Martin Immobilier est spécialisé sur ce segment. Les cabinets régionaux comme Armor Gestion ou Bretagne Syndic acceptent aussi les petites copropriétés tout en apportant une structure plus complète."
+  },
+  {
+    question: "Quel est le meilleur syndic pour une grande copropriété à Rennes ?",
+    answer: "Pour une copropriété de plus de 80 lots, les réseaux nationaux comme Foncia, Citya ou Nexity disposent des moyens techniques, juridiques et comptables adaptés à la complexité de gestion : gestion de travaux importants, montage de dossiers MaPrimeRénov' copropriétés, assemblées générales avec de nombreux copropriétaires. Leurs tarifs se situent généralement entre 140 et 220 €/lot/an. Vérifiez que le gestionnaire qui vous sera affecté ne gère pas plus de 40 copropriétés en portefeuille."
+  },
+  {
+    question: "Les avis Google sur les syndics rennais sont-ils fiables ?",
+    answer: "Les avis en ligne sur les syndics doivent être lus avec prudence. Ils sont souvent polarisés (les copropriétaires mécontents s'expriment plus que les satisfaits) et peuvent être influencés par des situations ponctuelles sans rapport avec la qualité globale du cabinet. Un syndic avec 3,5/5 n'est pas forcément moins bon qu'un syndic avec 4,5/5. Privilégiez les critères objectifs (carte professionnelle, ancienneté, taille de portefeuille) et demandez à échanger avec des copropriétés déjà gérées par le cabinet avant de signer."
+  },
+  {
+    question: "Comment obtenir une sélection personnalisée de syndics adaptés à ma copropriété ?",
+    answer: "Notre service de mise en relation est gratuit et sans engagement. Vous décrivez votre copropriété (nombre de lots, type d'immeuble, projets en cours) via un formulaire de 2 minutes. Nous analysons votre profil et transmettons votre demande aux syndics partenaires dont les caractéristiques correspondent réellement à votre situation. Vous recevez ensuite directement les propositions des cabinets sélectionnés sous 48 heures ouvrées, sans démarchage en masse."
+  },
+  {
+    question: "Faut-il privilégier un syndic rennais par rapport à un réseau national ?",
+    answer: "Cela dépend de votre copropriété. Un syndic rennais indépendant aura une meilleure connaissance du marché local (artisans, réglementations municipales, spécificités des quartiers) et sera plus réactif pour les petites et moyennes copropriétés. Un réseau national apportera des moyens techniques plus importants pour les grandes résidences complexes. Les cabinets régionaux bretons comme Armor Gestion combinent ancrage local et structure étoffée, ce qui en fait souvent un bon compromis."
+  }
+];
+---
+
+<BaseLayout
+  title="Meilleurs Syndics à Rennes : Sélection par Profil de Copropriété 2026"
+  description="Quels sont les meilleurs syndics de copropriété à Rennes ? Les 5 critères objectifs pour les identifier et notre sélection par profil (petites, moyennes, grandes copros). Service gratuit."
+  canonical="https://syndic-rennes.fr/meilleurs-syndics-rennes"
+  faqSchema={faqItems}
+>
+  <!-- JSON-LD ItemList (sélection par profil, sans rating subjectif) -->
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+
+  <!-- Hero -->
+  <section class="bg-primary text-white py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="font-heading text-3xl md:text-5xl font-extrabold mb-4 leading-tight">
+        Les meilleurs syndics à <span class="text-accent">Rennes</span>
+      </h1>
+      <p class="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+        Pas de classement subjectif. Une sélection par profil de copropriété, fondée sur des critères objectifs et vérifiables.
+      </p>
+      <a
+        href="#formulaire"
+        data-source="meilleurs-hero"
+        class="inline-block bg-accent hover:bg-orange-500 text-white font-heading font-bold px-8 py-4 rounded-xl text-lg transition-colors shadow-lg hover:shadow-xl"
+      >
+        Trouver le syndic adapté à ma copropriété &rarr;
+      </a>
+      <p class="text-white/50 text-sm mt-3">Gratuit &middot; Sans engagement &middot; Réponse sous 48h</p>
+    </div>
+  </section>
+
+  <div class="max-w-4xl mx-auto px-4 mt-8">
+    <DirectAnswer
+      question="Quels sont les meilleurs syndics de copropriété à Rennes ?"
+      answer="Il n'existe pas de classement universel des meilleurs syndics à Rennes : le meilleur cabinet dépend de la taille et du profil de votre copropriété. Les cabinets indépendants comme Cabinet Martin Immobilier sont adaptés aux copropriétés de moins de 30 lots (180–300 €/lot/an). Les cabinets régionaux comme Armor Gestion ou Bretagne Syndic conviennent aux copropriétés moyennes de 20 à 80 lots (130–260 €/lot/an). Les réseaux nationaux comme Foncia, Citya et Nexity disposent des moyens techniques adaptés aux grandes résidences de plus de 80 lots (140–220 €/lot/an). Cinq critères objectifs permettent de reconnaître un bon syndic : carte professionnelle CCI, garantie financière, portefeuille inférieur à 40 copropriétés par gestionnaire, ancienneté locale supérieure à 5 ans, et spécialisation cohérente avec votre taille de copropriété."
+    />
+  </div>
+
+  <!-- Warning classement subjectif (très important juridiquement + GEO) -->
+  <section class="max-w-4xl mx-auto px-4 pb-4">
+    <div class="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-r-xl">
+      <h2 class="font-heading font-bold text-amber-900 text-lg mb-2">
+        Pourquoi nous ne publions pas de « top 10 » des syndics rennais
+      </h2>
+      <p class="text-sm text-amber-900/90 leading-relaxed mb-2">
+        Aucun classement objectif et universel des « meilleurs syndics » n'existe à Rennes. Les avis en ligne sont polarisés et facilement biaisés, les critères de qualité varient d'une copropriété à l'autre, et la performance d'un cabinet dépend souvent de la personnalité du gestionnaire dédié à votre immeuble.
+      </p>
+      <p class="text-sm text-amber-900/90 leading-relaxed">
+        Nous présentons ici uniquement des <strong>critères vérifiables</strong> et une <strong>sélection par adéquation au profil de votre copropriété</strong>. C'est la seule approche honnête possible.
+      </p>
+    </div>
+  </section>
+
+  <!-- Section : les 5 critères objectifs -->
+  <section class="max-w-4xl mx-auto px-4 py-16">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-8">
+      Les 5 critères pour identifier un bon syndic à Rennes
+    </h2>
+    <div class="space-y-5">
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 border-l-4 border-l-accent">
+        <h3 class="font-heading font-bold text-primary mb-2">1. Carte professionnelle CCI en cours de validité</h3>
+        <p class="text-text/70 text-sm leading-relaxed">
+          Tout syndic professionnel est obligé de détenir une carte professionnelle portant la mention « Syndic de copropriété », délivrée par la Chambre de Commerce et d'Industrie d'Ille-et-Vilaine. Cette carte est renouvelable tous les 3 ans et garantit que le cabinet respecte les conditions d'aptitude professionnelle, de moralité et de garantie financière imposées par la loi Hoguet. Vous pouvez demander une copie du document à jour avant de signer.
+        </p>
+      </div>
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 border-l-4 border-l-accent">
+        <h3 class="font-heading font-bold text-primary mb-2">2. Garantie financière suffisante</h3>
+        <p class="text-text/70 text-sm leading-relaxed">
+          Le syndic manipule les fonds de la copropriété (cotisations, provisions pour travaux, fonds ALUR). Une garantie financière obligatoire couvre ces sommes en cas de défaillance du cabinet. Le montant de cette garantie doit être au moins égal aux fonds déposés. Vérifiez le nom de l'organisme garant (Galian, CEGC, SOCAF…) et le montant couvert — c'est une protection essentielle pour votre copropriété.
+        </p>
+      </div>
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 border-l-4 border-l-accent">
+        <h3 class="font-heading font-bold text-primary mb-2">3. Portefeuille inférieur à 40 copropriétés par gestionnaire</h3>
+        <p class="text-text/70 text-sm leading-relaxed">
+          C'est sans doute le critère le plus prédictif de la qualité de service. Un gestionnaire qui suit 30 copropriétés aura le temps de bien connaître chaque immeuble et ses copropriétaires. Au-delà de 50 copropriétés par gestionnaire, la disponibilité se dégrade fortement. Demandez systématiquement cette information lors d'un premier rendez-vous — un cabinet sérieux vous la communiquera sans difficulté.
+        </p>
+      </div>
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 border-l-4 border-l-accent">
+        <h3 class="font-heading font-bold text-primary mb-2">4. Ancienneté locale à Rennes supérieure à 5 ans</h3>
+        <p class="text-text/70 text-sm leading-relaxed">
+          Un cabinet implanté depuis plusieurs années à Rennes connaît les spécificités du marché local : le réseau d'artisans, les règles d'urbanisme de la métropole, les particularités des quartiers (centre ancien, ZAC Baud-Chardonnet, Villejean, Maurepas…). Cette connaissance fait gagner du temps et évite les erreurs d'estimation sur les travaux. Les cabinets récemment implantés sont viables, mais demandent un œil plus attentif sur les références.
+        </p>
+      </div>
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 border-l-4 border-l-accent">
+        <h3 class="font-heading font-bold text-primary mb-2">5. Spécialisation cohérente avec votre taille de copropriété</h3>
+        <p class="text-text/70 text-sm leading-relaxed">
+          Un cabinet qui gère principalement des immeubles de 100+ lots ne sera pas forcément le mieux placé pour une petite copropriété de 12 lots, et inversement. Regardez la taille moyenne des copropriétés du portefeuille du cabinet : elle doit correspondre à la vôtre. C'est un indicateur de l'adéquation entre leurs process et vos besoins.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section principale : sélection par profil -->
+  <section class="max-w-6xl mx-auto px-4 py-16 bg-bg">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary text-center mb-4">
+      Les meilleurs syndics selon votre profil de copropriété
+    </h2>
+    <p class="text-center text-text/60 max-w-2xl mx-auto mb-12 text-sm">
+      Sélection éditoriale fondée sur les caractéristiques déclarées des cabinets et leur adéquation à chaque profil. Les fourchettes tarifaires sont indicatives et issues de notre observation du marché rennais en 2026.
+    </p>
+
+    <!-- Bloc 1 : petites copros -->
+    <div class="mb-16">
+      <div class="max-w-4xl mx-auto mb-6">
+        <h3 class="font-heading text-xl md:text-2xl font-bold text-primary mb-2">
+          Pour les petites copropriétés (moins de 20 lots)
+        </h3>
+        <p class="text-text/70 text-sm leading-relaxed">
+          Les petites copropriétés ont besoin d'un interlocuteur unique, disponible et réactif, plus que de gros moyens techniques. Les cabinets indépendants locaux sont généralement les mieux adaptés à ce profil : tarifs compétitifs, connaissance fine du marché rennais, et un gestionnaire qui connaît personnellement votre immeuble.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {petitesSyndics.map(s => <SyndicCard syndic={s} />)}
+      </div>
+      <div class="text-center mt-6">
+        <a
+          href="#formulaire"
+          data-source="meilleurs-bloc-petites"
+          class="inline-block text-primary hover:text-accent font-heading font-semibold text-sm underline underline-offset-4"
+        >
+          Ma copropriété fait moins de 20 lots &rarr; recevoir des devis
+        </a>
+      </div>
+    </div>
+
+    <!-- Bloc 2 : moyennes copros -->
+    <div class="mb-16">
+      <div class="max-w-4xl mx-auto mb-6">
+        <h3 class="font-heading text-xl md:text-2xl font-bold text-primary mb-2">
+          Pour les copropriétés moyennes (20 à 80 lots)
+        </h3>
+        <p class="text-text/70 text-sm leading-relaxed">
+          C'est le profil le plus large à Rennes. Les cabinets régionaux bretons offrent souvent le meilleur équilibre : ils combinent la proximité d'un cabinet local avec les outils d'un groupe structuré (extranet copropriétaire, équipe juridique, suivi technique). Les cabinets indépendants expérimentés et certains réseaux nationaux peuvent aussi convenir.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {moyennesSyndics.map(s => <SyndicCard syndic={s} />)}
+      </div>
+      <div class="text-center mt-6">
+        <a
+          href="#formulaire"
+          data-source="meilleurs-bloc-moyennes"
+          class="inline-block text-primary hover:text-accent font-heading font-semibold text-sm underline underline-offset-4"
+        >
+          Ma copropriété fait 20 à 80 lots &rarr; recevoir des devis
+        </a>
+      </div>
+    </div>
+
+    <!-- Bloc 3 : grandes copros -->
+    <div class="mb-16">
+      <div class="max-w-4xl mx-auto mb-6">
+        <h3 class="font-heading text-xl md:text-2xl font-bold text-primary mb-2">
+          Pour les grandes copropriétés (plus de 80 lots)
+        </h3>
+        <p class="text-text/70 text-sm leading-relaxed">
+          Les grandes résidences ont besoin de moyens techniques, comptables et juridiques importants : gestion de travaux lourds, dossiers MaPrimeRénov' copropriétés, assemblées générales avec de nombreux copropriétaires. Les réseaux nationaux sont les plus armés pour répondre à ces enjeux. Vérifiez toutefois la taille du portefeuille du gestionnaire dédié à votre résidence.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {grandesSyndics.map(s => <SyndicCard syndic={s} />)}
+      </div>
+      <div class="text-center mt-6">
+        <a
+          href="#formulaire"
+          data-source="meilleurs-bloc-grandes"
+          class="inline-block text-primary hover:text-accent font-heading font-semibold text-sm underline underline-offset-4"
+        >
+          Ma copropriété fait plus de 80 lots &rarr; recevoir des devis
+        </a>
+      </div>
+    </div>
+
+    <!-- Bloc 4 : immeubles neufs / spécifiques -->
+    <div>
+      <div class="max-w-4xl mx-auto mb-6">
+        <h3 class="font-heading text-xl md:text-2xl font-bold text-primary mb-2">
+          Pour les immeubles neufs, mixtes ou à rénover
+        </h3>
+        <p class="text-text/70 text-sm leading-relaxed">
+          Les copropriétés récemment livrées (ZAC EuroRennes, Baud-Chardonnet, Via Silva) ou les immeubles anciens en rénovation énergétique demandent une expertise spécifique : première mise en copropriété, garantie de parfait achèvement, accompagnement MaPrimeRénov' collectif. Quelques cabinets rennais se sont spécialisés sur ces profils.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {neufsSyndics.map(s => <SyndicCard syndic={s} />)}
+      </div>
+      <div class="text-center mt-6">
+        <a
+          href="#formulaire"
+          data-source="meilleurs-bloc-neufs"
+          class="inline-block text-primary hover:text-accent font-heading font-semibold text-sm underline underline-offset-4"
+        >
+          Mon immeuble est neuf ou à rénover &rarr; recevoir des devis
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA intermédiaire -->
+  <div class="max-w-4xl mx-auto px-4">
+    <CTABanner source="meilleurs-mid" />
+  </div>
+
+  <!-- Section : questions à poser -->
+  <section class="max-w-4xl mx-auto px-4 py-16">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+      Les 6 questions à poser avant de signer avec un syndic
+    </h2>
+    <p class="text-text/70 mb-8">
+      Lors d'un premier rendez-vous avec un syndic, ces questions vous permettent de mesurer concrètement la qualité du service proposé — bien au-delà des arguments commerciaux classiques.
+    </p>
+    <ol class="space-y-5">
+      <li class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 flex gap-4">
+        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white font-heading font-bold flex items-center justify-center text-sm">1</span>
+        <div>
+          <p class="font-heading font-semibold text-primary mb-1">Combien de copropriétés gère le gestionnaire qui suivra notre immeuble ?</p>
+          <p class="text-text/70 text-sm">En dessous de 40, c'est bon signe. Entre 40 et 50, acceptable. Au-delà de 50, la qualité de suivi se dégrade significativement.</p>
+        </div>
+      </li>
+      <li class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 flex gap-4">
+        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white font-heading font-bold flex items-center justify-center text-sm">2</span>
+        <div>
+          <p class="font-heading font-semibold text-primary mb-1">Quelles prestations sont facturées hors forfait ?</p>
+          <p class="text-text/70 text-sm">Demandez la liste complète avec les tarifs : état daté, AG extraordinaire, suivi de travaux, mise en demeure d'impayés. Les écarts entre cabinets peuvent être considérables.</p>
+        </div>
+      </li>
+      <li class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 flex gap-4">
+        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white font-heading font-bold flex items-center justify-center text-sm">3</span>
+        <div>
+          <p class="font-heading font-semibold text-primary mb-1">Quel est le délai de réponse habituel aux emails et appels ?</p>
+          <p class="text-text/70 text-sm">Un bon syndic répond sous 48 à 72 heures ouvrées. Au-delà de 7 jours, c'est un signal d'alerte. Demandez à rencontrer un copropriétaire déjà client si possible.</p>
+        </div>
+      </li>
+      <li class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 flex gap-4">
+        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white font-heading font-bold flex items-center justify-center text-sm">4</span>
+        <div>
+          <p class="font-heading font-semibold text-primary mb-1">Quels outils digitaux sont inclus (extranet, app mobile, vote en ligne) ?</p>
+          <p class="text-text/70 text-sm">L'accès aux documents 24/7, le suivi des impayés, le vote dématérialisé en AG sont des éléments de confort et de transparence importants pour les copropriétaires.</p>
+        </div>
+      </li>
+      <li class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 flex gap-4">
+        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white font-heading font-bold flex items-center justify-center text-sm">5</span>
+        <div>
+          <p class="font-heading font-semibold text-primary mb-1">Avez-vous une expérience de copropriétés similaires à la nôtre à Rennes ?</p>
+          <p class="text-text/70 text-sm">Demandez 2 ou 3 références de copropriétés de taille et profil similaires. Un syndic sérieux vous les fournira sans problème après accord de ses clients.</p>
+        </div>
+      </li>
+      <li class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 flex gap-4">
+        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white font-heading font-bold flex items-center justify-center text-sm">6</span>
+        <div>
+          <p class="font-heading font-semibold text-primary mb-1">Quelle est la durée du mandat proposé et les conditions de résiliation ?</p>
+          <p class="text-text/70 text-sm">La loi ALUR limite les mandats à 3 ans maximum. Privilégiez un mandat d'1 an renouvelable pour les premières années, c'est moins engageant et ça incite le syndic à performer.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- Données terrain 2026 -->
+  <section class="max-w-4xl mx-auto px-4 py-16">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+      Données terrain sur les syndics rennais en 2026
+    </h2>
+    <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8">
+      <p class="text-text/70 text-sm mb-6 italic">
+        Observations issues de notre activité de mise en relation avec les copropriétés de Rennes et sa métropole. Les chiffres sont arrondis et indicatifs, à prendre comme des ordres de grandeur.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-heading font-bold text-primary mb-3">Fourchettes tarifaires observées</h3>
+          <ul class="space-y-2 text-sm text-text/70">
+            <li>&bull; Copros &lt; 10 lots : <strong class="text-primary">320 – 450 €/lot/an</strong></li>
+            <li>&bull; Copros 10 – 30 lots : <strong class="text-primary">200 – 300 €/lot/an</strong></li>
+            <li>&bull; Copros 30 – 100 lots : <strong class="text-primary">130 – 210 €/lot/an</strong></li>
+            <li>&bull; Copros &gt; 100 lots : <strong class="text-primary">90 – 160 €/lot/an</strong></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-heading font-bold text-primary mb-3">Délais et ratios</h3>
+          <ul class="space-y-2 text-sm text-text/70">
+            <li>&bull; Délai moyen de réponse à une demande de devis : <strong class="text-primary">3 à 7 jours ouvrés</strong></li>
+            <li>&bull; Durée moyenne d'une procédure de changement de syndic : <strong class="text-primary">3 à 6 mois</strong></li>
+            <li>&bull; Portefeuille moyen par gestionnaire sur Rennes : <strong class="text-primary">35 à 55 copropriétés</strong></li>
+            <li>&bull; Taux de changement annuel de syndic à Rennes : <strong class="text-primary">~18 % des copros</strong></li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-text/50 text-xs mt-6 italic">
+        Données collectées et mises à jour en 2026 à partir des devis transmis par notre réseau de partenaires et des déclarations des copropriétés accompagnées. Méthodologie disponible sur demande.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <div class="max-w-4xl mx-auto px-4">
+    <FAQ items={faqItems} />
+  </div>
+
+  <!-- CTA fort avant formulaire -->
+  <section class="max-w-4xl mx-auto px-4 py-12 text-center">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-4">
+      Quel est le meilleur syndic pour VOTRE copropriété ?
+    </h2>
+    <p class="text-text/70 text-lg max-w-2xl mx-auto mb-6">
+      Décrivez votre copropriété en 2 minutes. Nous identifions les cabinets dont le profil correspond réellement à votre situation — taille, type d'immeuble, projets. Pas de démarchage en masse, uniquement des syndics adaptés.
+    </p>
+    <a
+      href="#formulaire"
+      data-source="meilleurs-bottom"
+      class="inline-block bg-accent hover:bg-orange-500 text-white font-heading font-bold px-8 py-4 rounded-xl text-lg transition-colors shadow-lg hover:shadow-xl"
+    >
+      Recevoir ma sélection personnalisée &rarr;
+    </a>
+    <p class="text-text/40 text-sm mt-3">Gratuit &middot; Sans engagement &middot; Réponse sous 48h</p>
+  </section>
+
+  <!-- Formulaire -->
+  <div class="max-w-4xl mx-auto px-4 py-12">
+    <LeadForm />
+  </div>
+</BaseLayout>

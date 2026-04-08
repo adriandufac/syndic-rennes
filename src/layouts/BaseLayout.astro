@@ -78,7 +78,7 @@ const speakableSchema = {
   <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
   {faqPageSchema && <script type="application/ld+json" set:html={JSON.stringify(faqPageSchema)} />}
   <script type="application/ld+json" set:html={JSON.stringify(speakableSchema)} />
-  <script defer data-domain="syndic-rennes.fr" src="https://plausible.io/js/script.js"></script>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="9df0b15a-24c2-4da5-b57f-e65a7475043d"></script>
 </head>
 <body class="bg-bg text-text font-body antialiased">
   <Header />
@@ -87,19 +87,25 @@ const speakableSchema = {
   </main>
   <Footer />
   <script>
+    interface UmamiTracker {
+      track: (eventName: string, eventData?: Record<string, unknown>) => void;
+    }
+    const getUmami = (): UmamiTracker | undefined =>
+      (window as unknown as { umami?: UmamiTracker }).umami;
+
     document.querySelectorAll('a[href="#formulaire"], [data-cta]').forEach((el) => {
       el.addEventListener('click', () => {
-        window.plausible?.('CTA Click', { props: { source: (el as HTMLElement).dataset.source || 'unknown' } });
+        getUmami()?.track('CTA Click', { source: (el as HTMLElement).dataset.source || 'unknown' });
       });
     });
     document.querySelector('form[name="lead-syndic"]')?.addEventListener('submit', () => {
-      window.plausible?.('Lead Submitted');
+      getUmami()?.track('Lead Submitted');
     });
     const formSection = document.querySelector('#formulaire');
     if (formSection) {
       const observer = new IntersectionObserver(([entry]) => {
         if (entry.isIntersecting) {
-          window.plausible?.('Form Viewed');
+          getUmami()?.track('Form Viewed');
           observer.disconnect();
         }
       });
