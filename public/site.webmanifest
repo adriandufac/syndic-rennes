@@ -1,0 +1,21 @@
+{
+  "name": "SyndicRennes.fr",
+  "short_name": "SyndicRennes",
+  "description": "Service de mise en relation avec des syndics de copropriété à Rennes",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#1B4F72",
+  "background_color": "#F8F9FA",
+  "display": "standalone",
+  "start_url": "/"
+}
