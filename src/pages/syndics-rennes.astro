@@ -1,16 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LeadForm from '../components/LeadForm.astro';
-import CTABanner from '../components/CTABanner.astro';
 import FAQ from '../components/FAQ.astro';
-import SyndicCard from '../components/SyndicCard.astro';
 import DirectAnswer from '../components/DirectAnswer.astro';
-import { syndics } from '../data/syndics';
 
 const faqItems = [
   {
     question: "Combien de syndics professionnels exercent à Rennes ?",
-    answer: "Le marché rennais compte plusieurs dizaines de cabinets de syndic, allant de grandes enseignes nationales à des cabinets indépendants locaux. Chaque type de structure présente des caractéristiques différentes en termes de taille de portefeuille, de moyens techniques et de proximité avec les copropriétaires.",
+    answer: "Le marché rennais compte plusieurs dizaines de cabinets de syndic, répartis entre grandes enseignes nationales, cabinets régionaux bretons et cabinets indépendants locaux. Le chiffre exact n'est pas publié officiellement : pour obtenir la liste des syndics habilités à exercer en Ille-et-Vilaine, vous pouvez consulter la CCI d'Ille-et-Vilaine qui délivre les cartes professionnelles.",
   },
   {
     question: "Quelle est la différence entre un syndic indépendant et un réseau national ?",
@@ -18,15 +15,15 @@ const faqItems = [
   },
   {
     question: "Comment vérifier qu'un syndic est habilité à exercer ?",
-    answer: "Tout syndic professionnel doit détenir une carte professionnelle délivrée par la Chambre de Commerce et d'Industrie (CCI), une garantie financière suffisante et une assurance responsabilité civile professionnelle. Vous pouvez vérifier ces éléments auprès de la CCI d'Ille-et-Vilaine ou demander directement au cabinet de vous fournir ces justificatifs.",
+    answer: "Tout syndic professionnel doit détenir une carte professionnelle portant la mention « Syndic de copropriété », délivrée par la Chambre de Commerce et d'Industrie (CCI), ainsi qu'une garantie financière et une assurance responsabilité civile professionnelle. Vous pouvez vérifier ces éléments auprès de la CCI d'Ille-et-Vilaine ou demander directement au cabinet de vous fournir ces justificatifs avant de signer.",
   },
   {
-    question: "Les tarifs affichés sont-ils définitifs ?",
-    answer: "Les fourchettes tarifaires présentées sur cette page sont des estimations indicatives basées sur les pratiques constatées sur le marché rennais. Le tarif réel dépend de nombreux facteurs : nombre de lots, état de l'immeuble, prestations demandées, ancienneté de la copropriété. Seul un devis personnalisé établi après étude de votre copropriété engage le syndic.",
+    question: "Combien coûte un syndic de copropriété à Rennes en moyenne ?",
+    answer: "Selon les données de l'ARC (Association des Responsables de Copropriété), le forfait de base d'un syndic professionnel en France se situe en moyenne entre 150 et 200 € par lot et par an pour la gestion courante. Ce montant varie selon la taille de la copropriété : les petites copropriétés paient souvent plus cher par lot (coûts fixes incompressibles), tandis que les grandes résidences bénéficient d'économies d'échelle. Le tarif réel dépend aussi de l'état de l'immeuble, des prestations demandées et de l'ancienneté de la copropriété.",
   },
   {
     question: "Comment savoir quel type de syndic correspond à ma copropriété ?",
-    answer: "Le choix dépend principalement de la taille de votre copropriété, de vos besoins spécifiques (rénovation, gestion courante, immeuble neuf) et de vos attentes en termes de proximité. Une petite copropriété de moins de 15 lots privilégiera souvent un cabinet indépendant ou régional, tandis qu'une grande copropriété de plus de 50 lots pourra bénéficier des moyens d'un réseau national.",
+    answer: "Le choix dépend principalement de la taille de votre copropriété, de vos besoins spécifiques (rénovation, gestion courante, immeuble neuf) et de vos attentes en termes de proximité. Une petite copropriété de moins de 20 lots privilégiera souvent un cabinet indépendant ou régional, tandis qu'une grande copropriété de plus de 80 lots pourra bénéficier des moyens d'un réseau national. La taille du portefeuille du gestionnaire dédié est un indicateur plus fiable que le nom du cabinet.",
   },
   {
     question: "Ce service de mise en relation est-il gratuit ?",
@@ -36,8 +33,8 @@ const faqItems = [
 ---
 
 <BaseLayout
-  title="Les Syndics de Copropriété à Rennes : Fiches et Informations"
-  description="Découvrez les syndics professionnels présents à Rennes : spécialités, zones d'intervention, fourchettes tarifaires. Informations factuelles pour vous aider à choisir."
+  title="Les Syndics de Copropriété à Rennes : Guide des Cabinets et Types"
+  description="Comprendre le marché des syndics de copropriété à Rennes : les 3 grandes familles de cabinets, les critères pour choisir, et les moyennes tarifaires nationales (source ARC)."
   canonical="https://syndic-rennes.fr/syndics-rennes"
   faqSchema={faqItems}
 >
@@ -48,7 +45,7 @@ const faqItems = [
         Les syndics de copropriété à <span class="text-accent">Rennes</span>
       </h1>
       <p class="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
-        Informations factuelles sur les cabinets syndics présents sur le marché rennais : spécialités, zones couvertes, fourchettes tarifaires.
+        Comprendre le marché rennais : les trois grandes familles de cabinets, les critères pour choisir, et les repères tarifaires nationaux publiés par l'ARC.
       </p>
       <a
         href="#formulaire"
@@ -63,7 +60,7 @@ const faqItems = [
   <div class="max-w-4xl mx-auto px-4 mt-8">
     <DirectAnswer
       question="Quels sont les syndics de copropriété à Rennes ?"
-      answer="Rennes compte plus de 50 cabinets de syndics professionnels répartis en trois catégories : les réseaux nationaux (Foncia, Citya, Nexity), les cabinets régionaux implantés en Bretagne (Armor Gestion, Bretagne Syndic), et les cabinets indépendants locaux. Les tarifs varient de 80 à 420 € par lot et par an selon la taille de la copropriété. Le choix du type de cabinet dépend principalement du nombre de lots et de la complexité de gestion de votre immeuble."
+      answer="À Rennes, les syndics de copropriété se répartissent en trois grandes familles : les réseaux nationaux (grandes enseignes présentes dans toute la France), les cabinets régionaux implantés en Bretagne, et les cabinets indépendants locaux. Selon l'ARC (Association des Responsables de Copropriété), le forfait de base d'un syndic professionnel se situe en moyenne entre 150 et 200 € par lot et par an en France, avec des écarts significatifs selon la taille de la copropriété. Le choix du cabinet dépend avant tout de la taille de votre copropriété, du profil de l'immeuble et de vos attentes en matière de proximité et d'outils digitaux."
     />
   </div>
 
@@ -74,34 +71,91 @@ const faqItems = [
     </h2>
     <div class="prose prose-lg text-text/80 space-y-4">
       <p>
-        Rennes compte de nombreux cabinets syndics, reflétant la diversité de son parc immobilier. Entre les immeubles anciens du centre-ville, les résidences des années 1970 de Villejean ou Maurepas, et les programmes neufs de la ZAC EuroRennes ou de Baud-Chardonnet, les besoins en gestion de copropriété varient considérablement d'un immeuble à l'autre.
+        Rennes compte plusieurs dizaines de cabinets syndics, reflétant la diversité de son parc immobilier. Entre les immeubles anciens du centre-ville, les résidences des années 1970 de Villejean ou Maurepas, et les programmes neufs de la ZAC EuroRennes ou de Baud-Chardonnet, les besoins en gestion de copropriété varient considérablement d'un immeuble à l'autre.
       </p>
       <p>
-        On retrouve sur le marché rennais trois grandes familles de syndics : les <strong>réseaux nationaux</strong> (Foncia, Citya, Nexity...) qui disposent de moyens techniques et juridiques importants, les <strong>cabinets régionaux</strong> ancrés en Bretagne avec une bonne connaissance du tissu local, et les <strong>cabinets indépendants</strong> qui misent sur la proximité et un portefeuille de taille maîtrisée.
+        Sur ce marché, on distingue trois grandes familles de syndics : les <strong>réseaux nationaux</strong> qui disposent de moyens techniques et juridiques importants et d'une plateforme digitale standardisée, les <strong>cabinets régionaux</strong> ancrés en Bretagne avec une bonne connaissance du tissu local, et les <strong>cabinets indépendants</strong> qui misent sur la proximité et un portefeuille de taille maîtrisée.
       </p>
       <p>
-        Voici les informations objectives que nous avons rassemblées pour vous aider à comprendre les différences entre ces cabinets. Les données présentées sont factuelles : spécialités déclarées, zones d'intervention, fourchettes tarifaires constatées et profils de copropriétés auxquels chaque cabinet est le plus adapté. Si vous cherchez à identifier les <a href="/meilleurs-syndics-rennes" class="text-primary underline underline-offset-2 hover:text-accent">meilleurs syndics de Rennes pour votre copropriété</a>, notre sélection par profil vous orientera plus directement.
+        Cette page ne publie pas de liste nominative des cabinets rennais : les informations qu'on pourrait diffuser sur chaque cabinet (tarifs, portefeuilles, spécialités) ne sont pas publiques et mériteraient d'être collectées directement auprès de chaque syndic, de manière transparente et vérifiable. Ce que nous vous proposons à la place : comprendre comment ce marché fonctionne, identifier le type de syndic adapté à votre copropriété, et utiliser notre service gratuit pour être contacté par des professionnels vraiment pertinents pour vous.
       </p>
     </div>
   </section>
 
-  <!-- Grille de SyndicCards -->
-  <section class="max-w-6xl mx-auto px-4 pb-16">
-    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary text-center mb-10">
-      Les cabinets syndics présents à Rennes
+  <!-- Les 3 types de syndics -->
+  <section class="max-w-6xl mx-auto px-4 py-16 bg-bg">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary text-center mb-4">
+      Les trois familles de syndics à Rennes
     </h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {syndics.map(s => (
-        <SyndicCard syndic={s} />
-      ))}
+    <p class="text-center text-text/60 max-w-2xl mx-auto mb-10 text-sm">
+      Chaque famille présente des forces et des limites qui correspondent à des profils de copropriétés différents.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+        <span class="inline-block bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full mb-3">Cabinet indépendant</span>
+        <h3 class="font-heading text-lg font-bold text-primary mb-3">Cabinet local</h3>
+        <p class="text-sm text-text/70 mb-4">Petite structure, souvent portée par un ou deux gérants, avec un portefeuille limité dans un périmètre géographique restreint.</p>
+        <ul class="text-sm text-text/70 space-y-1.5 mb-3">
+          <li>&#10003; Proximité et réactivité fortes</li>
+          <li>&#10003; Interlocuteur unique identifié</li>
+          <li>&#10003; Connaissance fine du marché local</li>
+          <li>&#8227; Outils digitaux variables</li>
+        </ul>
+        <p class="text-xs text-text/50"><strong>Adapté à :</strong> copropriétés de moins de 30 lots recherchant un suivi personnalisé.</p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+        <span class="inline-block bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full mb-3">Cabinet régional</span>
+        <h3 class="font-heading text-lg font-bold text-primary mb-3">Cabinet breton</h3>
+        <p class="text-sm text-text/70 mb-4">Structure intermédiaire, présente dans plusieurs villes de Bretagne, combinant ancrage local et équipe structurée (juridique, technique, comptable).</p>
+        <ul class="text-sm text-text/70 space-y-1.5 mb-3">
+          <li>&#10003; Compromis proximité / moyens</li>
+          <li>&#10003; Outils digitaux mutualisés</li>
+          <li>&#10003; Équipes spécialisées</li>
+          <li>&#8227; Tarifs intermédiaires</li>
+        </ul>
+        <p class="text-xs text-text/50"><strong>Adapté à :</strong> copropriétés de 20 à 80 lots en recherche d'équilibre.</p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
+        <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full mb-3">Réseau national</span>
+        <h3 class="font-heading text-lg font-bold text-primary mb-3">Grande enseigne</h3>
+        <p class="text-sm text-text/70 mb-4">Réseau présent dans toute la France avec une agence locale rattachée à un groupe. Moyens techniques et juridiques importants, plateforme digitale standardisée.</p>
+        <ul class="text-sm text-text/70 space-y-1.5 mb-3">
+          <li>&#10003; Moyens techniques importants</li>
+          <li>&#10003; Extranet et app mobile inclus</li>
+          <li>&#10003; Équipes juridiques étoffées</li>
+          <li>&#8227; Réactivité variable selon l'agence</li>
+        </ul>
+        <p class="text-xs text-text/50"><strong>Adapté à :</strong> copropriétés de plus de 80 lots avec besoins techniques complexes.</p>
+      </div>
     </div>
-    <p class="text-center text-sm text-text/50 mt-6">
-      * Les fourchettes tarifaires sont indicatives, exprimées en euros par lot et par an. Elles varient selon la taille, l'ancienneté et les caractéristiques de chaque copropriété. Seul un devis personnalisé fait foi.
+  </section>
+
+  <!-- Repères tarifaires sourcés -->
+  <section class="max-w-4xl mx-auto px-4 py-16">
+    <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-6">
+      Repères tarifaires — sources ARC et UNARC
+    </h2>
+    <div class="bg-blue-50 border-l-4 border-primary rounded-r-xl p-6 mb-4">
+      <p class="text-sm text-text/80 leading-relaxed mb-3">
+        L'Association des Responsables de Copropriété (ARC / UNARC) publie régulièrement des données sur les honoraires pratiqués par les syndics en France. Selon leurs dernières publications :
+      </p>
+      <ul class="space-y-2 text-sm text-text/80">
+        <li>&bull; Le forfait de base se situe en moyenne entre <strong class="text-primary">150 et 200 €</strong> par lot principal et par an pour la gestion courante.</li>
+        <li>&bull; Les honoraires de syndic représentent <strong class="text-primary">environ 10 à 12 %</strong> des charges courantes d'une copropriété.</li>
+        <li>&bull; Les petites copropriétés paient souvent <strong class="text-primary">plus cher par lot</strong> en raison des coûts fixes incompressibles.</li>
+        <li>&bull; L'observatoire OSCAR de l'ARC, basé sur plus de 2 000 copropriétés, permet de comparer poste par poste le coût moyen au m².</li>
+      </ul>
+      <p class="text-xs text-text/50 mt-4 italic">
+        Sources : publications ARC / UNARC (arc-copro.fr), observatoire OSCAR. Moyennes nationales. Le tarif réel d'un syndic à Rennes peut varier selon la taille de la copropriété, l'ancienneté de l'immeuble, les prestations demandées et la politique commerciale du cabinet.
+      </p>
+    </div>
+    <p class="text-sm text-text/60 leading-relaxed">
+      Ces moyennes sont des <strong>repères nationaux</strong>. Pour connaître le tarif réellement proposé par un syndic pour votre copropriété, le seul moyen fiable reste le devis personnalisé après étude de votre immeuble. Notre service vous met en relation avec plusieurs cabinets pour obtenir ces devis sans démarche à votre charge.
     </p>
   </section>
 
   <!-- Critères à regarder dans un contrat -->
-  <section class="max-w-4xl mx-auto px-4 py-16">
+  <section class="max-w-4xl mx-auto px-4 py-16 bg-bg">
     <h2 class="font-heading text-2xl md:text-3xl font-bold text-primary mb-8">
       Les critères à regarder dans un contrat de syndic
     </h2>
@@ -137,7 +191,7 @@ const faqItems = [
   <section class="max-w-4xl mx-auto px-4 py-12">
     <div class="bg-primary text-white py-12 rounded-2xl text-center px-6">
       <h2 class="font-heading text-2xl md:text-3xl font-bold mb-4">
-        Vous ne savez pas lequel correspond à votre copropriété ?
+        Vous ne savez pas quel type de syndic correspond à votre copropriété ?
       </h2>
       <p class="text-white/80 mb-8 max-w-2xl mx-auto text-lg">
         Chaque copropriété a ses spécificités : taille, ancienneté, projets de travaux, budget. Décrivez votre situation, on vous oriente vers les syndics dont le profil est le plus adapté.
