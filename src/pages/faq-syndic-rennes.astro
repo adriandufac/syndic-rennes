@@ -7,7 +7,7 @@ const faqItems = [
   // Bloc 1 — Prix et tarifs
   {
     question: "Quel est le prix moyen d'un syndic à Rennes ?",
-    answer: "En 2025, le prix moyen d'un syndic professionnel à Rennes se situe entre 120 et 280 euros par lot et par an pour une copropriété de 10 à 30 lots. Les petites copropriétés de moins de 10 lots paient plus cher (280 à 420 euros par lot) en raison des coûts fixes incompressibles répartis sur moins de copropriétaires. Au-delà de 100 lots, les tarifs descendent entre 80 et 150 euros par lot et par an."
+    answer: "Selon les données de l'ARC (Association des Responsables de Copropriété) et de son observatoire OSCAR, le forfait de base moyen d'un syndic professionnel en France se situe entre 150 et 200 euros par lot et par an pour la gestion courante. Ce tarif varie fortement selon la taille de la copropriété : les petites copropriétés de moins de 10 lots paient souvent plus cher par lot (coûts fixes incompressibles répartis sur moins de copropriétaires), tandis que les copropriétés de plus de 100 lots bénéficient d'économies d'échelle. Ces ordres de grandeur s'appliquent aussi au marché rennais, mais seul un devis personnalisé fait foi."
   },
   {
     question: "Comment est calculé le tarif d'un syndic ?",
@@ -15,15 +15,15 @@ const faqItems = [
   },
   {
     question: "Quelles prestations sont hors forfait chez un syndic ?",
-    answer: "Les prestations hors forfait les plus courantes sont : la tenue d'assemblées générales extraordinaires (300 à 800 euros chacune), le suivi de travaux importants (2 à 4% du montant HT), la gestion de contentieux et le recouvrement d'impayés, ainsi que les états datés lors de la vente d'un lot (plafonnés à 380 euros TTC depuis 2020). Ces suppléments peuvent représenter 20 à 40% du forfait de base selon les années."
+    answer: "Les prestations hors forfait les plus courantes sont : la tenue d'assemblées générales extraordinaires, le suivi de travaux importants (facturé généralement en pourcentage du montant HT), la gestion de contentieux et le recouvrement d'impayés, ainsi que les états datés lors de la vente d'un lot (plafonnés à 380 euros TTC depuis le décret n° 2020-153 du 21 février 2020). À l'exception de l'état daté, ces montants ne sont pas réglementés et varient selon les cabinets — le contrat-type annexé au décret n° 2015-342 du 26 mars 2015 impose que ces prestations soient listées et tarifées dans le contrat. L'ARC signale régulièrement une hausse significative de ces honoraires hors forfait ces dernières années."
   },
   {
     question: "Peut-on négocier le tarif d'un syndic ?",
-    answer: "Oui, les honoraires de syndic sont libres et négociables. Le levier le plus efficace est la mise en concurrence lors de l'assemblée générale : en présentant 2 à 3 devis concurrents, vous disposez d'une base de négociation solide. En moyenne, cette démarche permet de réduire les honoraires de 15 à 30%. Le conseil syndical joue un rôle central dans cette négociation."
+    answer: "Oui, les honoraires de syndic sont libres et négociables. Le levier le plus efficace est la mise en concurrence lors de l'assemblée générale : en présentant 2 à 3 devis concurrents, vous disposez d'une base de négociation solide. Les économies réalisables dépendent fortement de la situation de départ et du marché local ; l'ARC (Association des Responsables de Copropriété) recommande systématiquement cette mise en concurrence et signale que des écarts significatifs existent entre les offres. Le conseil syndical joue un rôle central dans cette négociation."
   },
   {
     question: "Pourquoi les petites copropriétés paient-elles plus cher par lot ?",
-    answer: "Un syndic supporte des coûts fixes incompressibles quelle que soit la taille de la copropriété : tenue de l'AG, comptabilité, assurances, archivage, représentation légale. Dans une copropriété de 6 lots, ces coûts sont répartis entre 6 copropriétaires au lieu de 50 ou 100, ce qui fait mécaniquement monter le prix par lot. C'est pourquoi une copropriété de moins de 10 lots paie en moyenne 280 à 420 euros par lot, contre 80 à 150 euros pour plus de 100 lots."
+    answer: "Un syndic supporte des coûts fixes incompressibles quelle que soit la taille de la copropriété : tenue de l'AG, comptabilité, assurances, archivage, représentation légale. Dans une copropriété de 6 lots, ces coûts sont répartis entre 6 copropriétaires au lieu de 50 ou 100, ce qui fait mécaniquement monter le prix par lot. L'ARC signale d'ailleurs que les hausses de forfait de base constatées ces dernières années ont été particulièrement fortes sur les petites copropriétés. C'est pourquoi il est particulièrement important pour les petites copropriétés de mettre plusieurs syndics en concurrence avant de signer un contrat."
   },
   {
     question: "Que comprend le forfait de base d'un syndic ?",
@@ -67,7 +67,7 @@ const faqItems = [
   },
   {
     question: "Quelles sont les obligations légales d'un syndic ?",
-    answer: "Le syndic a des obligations définies par la loi du 10 juillet 1965 : exécuter les décisions de l'AG, administrer l'immeuble et assurer sa conservation, établir et tenir à jour le carnet d'entretien, gérer la comptabilité du syndicat, ouvrir un compte bancaire séparé au nom du syndicat (obligatoire depuis la loi ALUR pour les copropriétés de plus de 15 lots), et convoquer l'assemblée générale au moins une fois par an."
+    answer: "Le syndic a des obligations définies par la loi du 10 juillet 1965 : exécuter les décisions de l'AG, administrer l'immeuble et assurer sa conservation, établir et tenir à jour le carnet d'entretien, gérer la comptabilité du syndicat, ouvrir un compte bancaire séparé au nom du syndicat (obligatoire depuis la loi ALUR et, depuis la loi ELAN, sans dispense possible pour les copropriétés de 15 lots ou moins — entrée en vigueur au 31 décembre 2020), et convoquer l'assemblée générale au moins une fois par an."
   },
   {
     question: "Un syndic peut-il refuser de gérer une petite copropriété ?",
@@ -93,7 +93,7 @@ const faqItems = [
   // Bloc 4 — Spécifique Rennes
   {
     question: "Quels types de syndics trouve-t-on à Rennes ?",
-    answer: "Le marché rennais comprend quatre profils de syndics : les grands groupes nationaux (Nexity, Foncia, Citya) qui gèrent de gros volumes, les cabinets régionaux implantés historiquement en Ille-et-Vilaine, les structures indépendantes de proximité spécialisées dans certains quartiers ou types de copropriétés, et les syndics en ligne qui proposent des tarifs réduits avec une gestion dématérialisée. Plus de 50 cabinets exercent dans l'agglomération."
+    answer: "Le marché rennais comprend quatre profils de syndics : les grands groupes nationaux (qui gèrent de gros volumes), les cabinets régionaux implantés historiquement en Ille-et-Vilaine, les structures indépendantes de proximité spécialisées dans certains quartiers ou types de copropriétés, et les syndics en ligne qui proposent des tarifs réduits avec une gestion dématérialisée. Plusieurs dizaines de cabinets exercent dans l'agglomération ; aucun chiffre officiel n'est publié, et la liste des syndics habilités à exercer peut être demandée à la CCI d'Ille-et-Vilaine."
   },
   {
     question: "Y a-t-il des différences de tarifs entre Rennes centre et la périphérie ?",
@@ -101,11 +101,11 @@ const faqItems = [
   },
   {
     question: "Comment se déroule une AG de copropriété à Rennes ?",
-    answer: "L'assemblée générale est convoquée par le syndic au moins 21 jours à l'avance. À Rennes, elle se tient généralement dans une salle louée par le syndic ou dans les locaux communs de la copropriété. Les copropriétaires votent les résolutions à différentes majorités selon leur nature (article 24, 25 ou 26 de la loi de 1965). Depuis la loi du 22 novembre 2021, la participation par visioconférence est possible si l'AG l'a préalablement autorisée."
+    answer: "L'assemblée générale est convoquée par le syndic au moins 21 jours à l'avance (article 9 du décret n° 67-223 du 17 mars 1967). À Rennes, elle se tient généralement dans une salle louée par le syndic ou dans les locaux communs de la copropriété. Les copropriétaires votent les résolutions à différentes majorités selon leur nature (article 24, 25 ou 26 de la loi du 10 juillet 1965). La participation à distance par visioconférence est autorisée depuis le décret n° 2019-650 du 27 juin 2019, pris en application de l'article 211 de la loi ELAN, à condition que l'AG l'ait préalablement autorisée et que les moyens techniques permettent une intervention en direct et une retransmission continue des débats."
   },
   {
     question: "Combien de syndics professionnels exercent à Rennes ?",
-    answer: "L'agglomération rennaise compte plus de 50 cabinets de syndics professionnels, allant des antennes de grands groupes nationaux aux cabinets indépendants locaux. Ce nombre inclut les syndics dont le siège est à Rennes ainsi que ceux basés dans la métropole rennaise (Cesson-Sévigné, Saint-Grégoire, Chantepie). Cette densité assure un niveau de concurrence favorable aux copropriétaires."
+    answer: "L'agglomération rennaise compte plusieurs dizaines de cabinets de syndics professionnels, allant des antennes de grands groupes nationaux aux cabinets indépendants locaux. Le chiffre exact n'est pas publié officiellement ; pour obtenir la liste des syndics habilités, vous pouvez vous adresser à la CCI d'Ille-et-Vilaine qui délivre les cartes professionnelles. Cette densité assure un niveau de concurrence favorable aux copropriétaires dans la métropole rennaise (Rennes centre et communes limitrophes comme Cesson-Sévigné, Saint-Grégoire, Chantepie)."
   },
   {
     question: "Est-ce que le service de mise en relation SyndicRennes.fr est gratuit ?",

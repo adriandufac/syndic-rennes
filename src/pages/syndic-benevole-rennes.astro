@@ -24,7 +24,7 @@ const faqItems = [
   },
   {
     question: "Le syndic bénévole doit-il ouvrir un compte bancaire séparé ?",
-    answer: "Oui, depuis la loi ALUR de 2014, le syndic bénévole est tenu d'ouvrir un compte bancaire séparé au nom du syndicat des copropriétaires. Ce compte doit être distinct de ses comptes personnels. Cette obligation s'applique sans exception et sans dispense possible, quelle que soit la taille de la copropriété. Le non-respect de cette obligation peut engager la responsabilité du syndic bénévole."
+    answer: "Oui. La loi ALUR (2014) a imposé l'ouverture d'un compte bancaire séparé au nom du syndicat des copropriétaires, avec à l'origine une possibilité de dispense pour les copropriétés de 15 lots ou moins. Cette dispense a été supprimée par la loi ELAN, avec une entrée en vigueur au 31 décembre 2020 : désormais, tous les syndics (professionnels comme bénévoles) doivent ouvrir un compte bancaire séparé, sans exception, quelle que soit la taille de la copropriété. Ce compte doit être distinct des comptes personnels du syndic bénévole, et le non-respect de cette obligation peut engager sa responsabilité."
   },
   {
     question: "Combien de temps dure le mandat d'un syndic bénévole à Rennes ?",
@@ -62,7 +62,7 @@ const faqItems = [
   <div class="max-w-4xl mx-auto px-4 mt-8">
     <DirectAnswer
       question="Le syndic bénévole est-il une bonne solution pour une copropriété à Rennes ?"
-      answer="Le syndic bénévole convient aux petites copropriétés de moins de 10-15 lots à Rennes, à condition qu'un copropriétaire soit disponible et compétent. Il permet d'économiser 2 000 à 5 000 € par an sur les honoraires. En contrepartie, le bénévole assume les mêmes obligations légales qu'un professionnel : compte bancaire séparé, assurance responsabilité civile, tenue du carnet d'entretien, immatriculation au registre national. Pour les copropriétés plus grandes ou complexes, un syndic professionnel est recommandé."
+      answer="Le syndic bénévole convient aux petites copropriétés de moins de 10 à 15 lots à Rennes, à condition qu'un copropriétaire soit disponible et compétent. Il permet d'économiser l'intégralité du forfait de syndic (qui représente, selon l'ARC, entre 150 et 200 € par lot et par an en moyenne, davantage pour les petites copropriétés), moins le coût d'une assurance responsabilité civile. En contrepartie, le bénévole assume les mêmes obligations légales qu'un professionnel : compte bancaire séparé (sans dispense depuis la loi ELAN), assurance responsabilité civile, tenue du carnet d'entretien, immatriculation au registre national des copropriétés. Pour les copropriétés plus grandes ou complexes, un syndic professionnel est recommandé."
     />
   </div>
 
@@ -100,7 +100,7 @@ const faqItems = [
             <span class="text-green-600 font-bold mt-0.5">&#10003;</span>
             <div>
               <strong class="text-text">Économies significatives</strong>
-              <p class="text-sm text-text/70 mt-1">En supprimant les honoraires du syndic professionnel, une copropriété de 10 lots à Rennes peut économiser entre 1 800 et 4 200 euros par an. Ces économies peuvent être réaffectées à l'entretien de l'immeuble ou à la constitution d'un fonds de travaux.</p>
+              <p class="text-sm text-text/70 mt-1">En supprimant les honoraires du syndic professionnel, une copropriété bénévole fait l'économie quasi totale du forfait de gestion (selon l'ARC, en moyenne 150 à 200 € par lot et par an, davantage pour les petites copros), hors coût d'une assurance responsabilité civile. Ces économies peuvent être réaffectées à l'entretien de l'immeuble ou à la constitution d'un fonds de travaux.</p>
             </div>
           </li>
           <li class="flex items-start gap-3">
@@ -137,7 +137,7 @@ const faqItems = [
             <span class="text-red-600 font-bold mt-0.5">&#10007;</span>
             <div>
               <strong class="text-text">Charge de travail importante</strong>
-              <p class="text-sm text-text/70 mt-1">Gérer une copropriété demande du temps : comptabilité, suivi des prestataires, courriers, convocations d'AG, gestion des sinistres... Selon la taille de l'immeuble, comptez 5 à 15 heures par mois. Cette charge peut devenir pesante sur la durée, surtout si le syndic bénévole a une activité professionnelle à côté.</p>
+              <p class="text-sm text-text/70 mt-1">Gérer une copropriété demande du temps : comptabilité, suivi des prestataires, courriers, convocations d'AG, gestion des sinistres... Selon la taille et la complexité de l'immeuble, cette charge peut représenter plusieurs heures par mois, avec des pics lors de la préparation de l'assemblée générale annuelle et lors de travaux ou sinistres. Elle peut devenir pesante sur la durée, surtout si le syndic bénévole a une activité professionnelle à côté.</p>
             </div>
           </li>
           <li class="flex items-start gap-3">
@@ -180,13 +180,13 @@ const faqItems = [
       <div class="bg-white rounded-2xl shadow-lg p-6">
         <h3 class="font-heading font-bold text-primary mb-3">Compte bancaire séparé</h3>
         <p class="text-sm text-text/70 leading-relaxed">
-          Depuis la loi ALUR (2014), le syndic bénévole doit obligatoirement ouvrir un compte bancaire séparé au nom du syndicat des copropriétaires. Ce compte doit être distinct de tous ses comptes personnels. Aucune dispense n'est possible, quelle que soit la taille de la copropriété. Les fonds de la copropriété ne doivent jamais transiter par un compte personnel.
+          La loi ALUR (2014) a imposé l'ouverture d'un compte bancaire séparé au nom du syndicat des copropriétaires, avec à l'origine une possibilité de dispense pour les copropriétés de 15 lots ou moins. Cette dispense a été supprimée par la loi ELAN, en vigueur au 31 décembre 2020 : tous les syndics bénévoles doivent désormais ouvrir un compte séparé, sans exception, quelle que soit la taille de la copropriété. Ce compte doit être distinct de tous les comptes personnels du syndic, et les fonds de la copropriété ne doivent jamais transiter par un compte personnel.
         </p>
       </div>
       <div class="bg-white rounded-2xl shadow-lg p-6">
         <h3 class="font-heading font-bold text-primary mb-3">Assurance responsabilité civile</h3>
         <p class="text-sm text-text/70 leading-relaxed">
-          Le syndic bénévole doit souscrire une assurance responsabilité civile couvrant ses activités de gestion de la copropriété. Cette assurance est indispensable pour le protéger en cas de mise en cause. Son coût est généralement compris entre 150 et 300 euros par an et peut être pris en charge par la copropriété sur décision de l'assemblée générale.
+          Le syndic bénévole doit souscrire une assurance responsabilité civile couvrant ses activités de gestion de la copropriété. Cette assurance est indispensable pour le protéger en cas de mise en cause. Son coût dépend du profil de la copropriété et de l'assureur choisi ; il peut être pris en charge par la copropriété sur décision de l'assemblée générale. Plusieurs compagnies d'assurance proposent des contrats spécifiquement dédiés aux syndics bénévoles.
         </p>
       </div>
       <div class="bg-white rounded-2xl shadow-lg p-6">
@@ -265,7 +265,7 @@ const faqItems = [
           Être syndic bénévole, c'est un engagement sur la durée. Il faut pouvoir consacrer plusieurs heures par mois à la gestion de la copropriété, être disponible pour les urgences (fuites, pannes, sinistres) et assurer le suivi administratif tout au long de l'année. Cet engagement est difficilement compatible avec un emploi du temps très chargé ou des absences prolongées.
         </p>
         <p class="text-sm text-text/70 leading-relaxed">
-          Posez-vous honnêtement la question : êtes-vous prêt à consacrer 5 à 15 heures par mois à cette mission pendant plusieurs années ? Avez-vous quelqu'un pour vous relayer en cas d'absence ? Si la réponse est non, il est préférable de faire appel à un professionnel.
+          Posez-vous honnêtement la question : êtes-vous prêt à consacrer plusieurs heures par mois à cette mission pendant plusieurs années, avec des pics de charge lors de la préparation de l'AG annuelle ou en cas de travaux et sinistres ? Avez-vous quelqu'un pour vous relayer en cas d'absence ? Si la réponse est non, il est préférable de faire appel à un professionnel.
         </p>
       </div>
 
