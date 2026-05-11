@@ -5,7 +5,17 @@
       "Bash(npm install:*)",
       "Bash(npx astro:*)",
       "Bash(npm run:*)",
-      "WebSearch"
+      "WebSearch",
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__query-docs",
+      "mcp__gsc__list_sites",
+      "Bash(claude mcp *)",
+      "Bash(node *)",
+      "Read(//c/Users/adria/AppData/**)",
+      "Read(//c/Users/adria/.config/**)",
+      "mcp__gsc__list_sitemaps",
+      "WebFetch(domain:syndic-rennes.fr)",
+      "mcp__gsc__index_inspect"
     ]
   }
 }
